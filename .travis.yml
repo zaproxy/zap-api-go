@@ -1,0 +1,18 @@
+language: go
+
+go:
+  - 1.6
+  - 1.7
+  - 1.8
+  - tip
+
+services:
+  - zap-api-go
+
+before_install:
+  - go get -v github.com/golang/lint/golint
+
+script:
+  - ./pre-commit
+  #TODO: enable this when we have test files
+  #- go test -cpu=1,2 -v -tags integration ./...
