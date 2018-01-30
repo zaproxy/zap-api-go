@@ -62,6 +62,14 @@ func (s Spider) AllUrls() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/allUrls/", nil)
 }
 
+// Returns a list of the names of the nodes added to the Sites tree by the specified scan.
+func (s Spider) AddedNodes(scanid string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"scanId": scanid,
+	}
+	return s.c.Request("spider/view/addedNodes/", m)
+}
+
 // Gets all the domains that are always in scope. For each domain the following are shown: the index, the value (domain), if enabled, and if specified as a regex.
 func (s Spider) DomainsAlwaysInScope() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/domainsAlwaysInScope/", nil)

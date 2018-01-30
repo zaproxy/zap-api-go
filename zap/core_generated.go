@@ -125,7 +125,7 @@ func (c Core) Version() (map[string]interface{}, error) {
 	return c.c.Request("core/view/version/", nil)
 }
 
-// Gets the regular expressions, applied to URLs, to exclude from the Proxy
+// Gets the regular expressions, applied to URLs, to exclude from the local proxies.
 func (c Core) ExcludedFromProxy() (map[string]interface{}, error) {
 	return c.c.Request("core/view/excludedFromProxy/", nil)
 }
@@ -281,12 +281,12 @@ func (c Core) SnapshotSession() (map[string]interface{}, error) {
 	return c.c.Request("core/action/snapshotSession/", nil)
 }
 
-// Clears the regexes of URLs excluded from the proxy.
+// Clears the regexes of URLs excluded from the local proxies.
 func (c Core) ClearExcludedFromProxy() (map[string]interface{}, error) {
 	return c.c.Request("core/action/clearExcludedFromProxy/", nil)
 }
 
-// Adds a regex of URLs that should be excluded from the proxy.
+// Adds a regex of URLs that should be excluded from the local proxies.
 func (c Core) ExcludeFromProxy(regex string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"regex": regex,
@@ -309,7 +309,7 @@ func (c Core) SetMode(mode string) (map[string]interface{}, error) {
 	return c.c.Request("core/action/setMode/", m)
 }
 
-// Generates a new Root CA certificate for the Local Proxy.
+// Generates a new Root CA certificate for the local proxies.
 func (c Core) GenerateRootCA() (map[string]interface{}, error) {
 	return c.c.Request("core/action/generateRootCA/", nil)
 }
@@ -326,6 +326,14 @@ func (c Core) SendRequest(request string, followredirects string) (map[string]in
 // Deletes all alerts of the current session.
 func (c Core) DeleteAllAlerts() (map[string]interface{}, error) {
 	return c.c.Request("core/action/deleteAllAlerts/", nil)
+}
+
+// Deletes the alert with the given ID.
+func (c Core) DeleteAlert(id string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"id": id,
+	}
+	return c.c.Request("core/action/deleteAlert/", m)
 }
 
 func (c Core) RunGarbageCollection() (map[string]interface{}, error) {
@@ -492,6 +500,7 @@ func (c Core) SetOptionTimeoutInSecs(i int) (map[string]interface{}, error) {
 	return c.c.Request("core/action/setOptionTimeoutInSecs/", m)
 }
 
+// Sets whether or not the outgoing proxy should be used. The address/hostname of the outgoing proxy must be set to enable this option.
 func (c Core) SetOptionUseProxyChain(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -510,7 +519,7 @@ func (c Core) Proxypac() ([]byte, error) {
 	return c.c.RequestOther("core/other/proxy.pac/", nil)
 }
 
-// Gets the Root CA certificate of the Local Proxy.
+// Gets the Root CA certificate used by the local proxies.
 func (c Core) Rootcert() ([]byte, error) {
 	return c.c.RequestOther("core/other/rootcert/", nil)
 }
@@ -530,6 +539,11 @@ func (c Core) Xmlreport() ([]byte, error) {
 // Generates a report in HTML format
 func (c Core) Htmlreport() ([]byte, error) {
 	return c.c.RequestOther("core/other/htmlreport/", nil)
+}
+
+// Generates a report in JSON format
+func (c Core) Jsonreport() ([]byte, error) {
+	return c.c.RequestOther("core/other/jsonreport/", nil)
 }
 
 // Generates a report in Markdown format

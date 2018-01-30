@@ -41,6 +41,7 @@ func (a Ascan) ScanProgress(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/scanProgress/", m)
 }
 
+// Gets the IDs of the messages sent during the scan with the given ID. A message can be obtained with 'message' core view.
 func (a Ascan) MessagesIds(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -48,6 +49,7 @@ func (a Ascan) MessagesIds(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/messagesIds/", m)
 }
 
+// Gets the IDs of the alerts raised during the scan with the given ID. An alert can be obtained with 'alert' core view.
 func (a Ascan) AlertsIds(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -369,6 +371,14 @@ func (a Ascan) UpdateScanPolicy(scanpolicyname string, alertthreshold string, at
 	return a.c.Request("ascan/action/updateScanPolicy/", m)
 }
 
+// Imports a Scan Policy using the given file system path.
+func (a Ascan) ImportScanPolicy(path string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"path": path,
+	}
+	return a.c.Request("ascan/action/importScanPolicy/", m)
+}
+
 // Adds a new parameter excluded from the scan, using the specified name. Optionally sets if the new entry applies to a specific URL (default, all URLs) and sets the ID of the type of the parameter (default, ID of any type). The type IDs can be obtained with the view excludedParamTypes.
 func (a Ascan) AddExcludedParam(name string, t string, url string) (map[string]interface{}, error) {
 	m := map[string]string{
@@ -396,6 +406,15 @@ func (a Ascan) RemoveExcludedParam(idx string) (map[string]interface{}, error) {
 		"idx": idx,
 	}
 	return a.c.Request("ascan/action/removeExcludedParam/", m)
+}
+
+// Skips the scanner using the given IDs of the scan and the scanner.
+func (a Ascan) SkipScanner(scanid string, scannerid string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"scanId":    scanid,
+		"scannerId": scannerid,
+	}
+	return a.c.Request("ascan/action/skipScanner/", m)
 }
 
 func (a Ascan) SetOptionAttackPolicy(str string) (map[string]interface{}, error) {
