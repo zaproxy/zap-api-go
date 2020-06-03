@@ -37,6 +37,12 @@ type Interface interface {
 	Spider() *Spider
 	Stats() *Stats
 	Users() *Users
+	Openapi() *Openapi
+}
+
+// Openapi() returns a Openapi clinet
+func (c *Client) Openapi() *Openapi {
+	return &Openapi{c}
 }
 
 // Acsrf() returns a Acsrf client
