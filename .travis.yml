@@ -1,16 +1,17 @@
 language: go
 
 go:
-  - 1.6
-  - 1.7
-  - 1.8
+  - 1.11
+  - 1.12
+  - 1.13
+  - 1.14
   - tip
 
 services:
   - zap-api-go
 
 before_install:
-  - go get -v github.com/golang/lint/golint
+  - go get -v golang.org/x/lint
 
 script:
   - ./pre-commit
