@@ -21,7 +21,10 @@ package zap
 
 // Interface defines the interface a ZAP client should implement
 type Interface interface {
+	AccessControl() *AccessControl
 	Acsrf() *Acsrf
+	AjaxSpider() *AjaxSpider
+	AlertFilter() *AlertFilter
 	Ascan() *Ascan
 	Authentication() *Authentication
 	Authorization() *Authorization
@@ -29,21 +32,47 @@ type Interface interface {
 	Break() *Break
 	Context() *Context
 	Core() *Core
+	Exportreport() *Exportreport
 	ForcedUser() *ForcedUser
 	HttpSessions() *HttpSessions
+	ImportLogFiles() *ImportLogFiles
+	Importurls() *Importurls
 	Openapi() *Openapi
 	Params() *Params
+	Pnh() *Pnh
 	Pscan() *Pscan
+	Replacer() *Replacer
+	Reveal() *Reveal
+	Revisit() *Revisit
 	Script() *Script
 	Search() *Search
+	Selenium() *Selenium
+	Soap() *Soap
 	Spider() *Spider
 	Stats() *Stats
 	Users() *Users
+	Wappalyzer() *Wappalyzer
+	Websocket() *Websocket
+}
+
+// AccessControl() returns a AccessControl client
+func (c *Client) AccessControl() *AccessControl {
+	return &AccessControl{c}
 }
 
 // Acsrf() returns a Acsrf client
 func (c *Client) Acsrf() *Acsrf {
 	return &Acsrf{c}
+}
+
+// AjaxSpider() returns a AjaxSpider client
+func (c *Client) AjaxSpider() *AjaxSpider {
+	return &AjaxSpider{c}
+}
+
+// AlertFilter() returns a AlertFilter client
+func (c *Client) AlertFilter() *AlertFilter {
+	return &AlertFilter{c}
 }
 
 // Ascan() returns a Ascan client
@@ -81,6 +110,11 @@ func (c *Client) Core() *Core {
 	return &Core{c}
 }
 
+// Exportreport() returns a Exportreport client
+func (c *Client) Exportreport() *Exportreport {
+	return &Exportreport{c}
+}
+
 // ForcedUser() returns a ForcedUser client
 func (c *Client) ForcedUser() *ForcedUser {
 	return &ForcedUser{c}
@@ -89,6 +123,16 @@ func (c *Client) ForcedUser() *ForcedUser {
 // HttpSessions() returns a HttpSessions client
 func (c *Client) HttpSessions() *HttpSessions {
 	return &HttpSessions{c}
+}
+
+// ImportLogFiles() returns a ImportLogFiles client
+func (c *Client) ImportLogFiles() *ImportLogFiles {
+	return &ImportLogFiles{c}
+}
+
+// Importurls() returns a Importurls client
+func (c *Client) Importurls() *Importurls {
+	return &Importurls{c}
 }
 
 // Openapi() returns a Openapi clinet
@@ -101,9 +145,29 @@ func (c *Client) Params() *Params {
 	return &Params{c}
 }
 
+// Pnh() returns a Pnh client
+func (c *Client) Pnh() *Pnh {
+	return &Pnh{c}
+}
+
 // Pscan() returns a Pscan client
 func (c *Client) Pscan() *Pscan {
 	return &Pscan{c}
+}
+
+// Replacer() returns a Replacer client
+func (c *Client) Replacer() *Replacer {
+	return &Replacer{c}
+}
+
+// Reveal() returns a Reveal client
+func (c *Client) Reveal() *Reveal {
+	return &Reveal{c}
+}
+
+// Revisit() returns a Revisit client
+func (c *Client) Revisit() *Revisit {
+	return &Revisit{c}
 }
 
 // Script() returns a Script client
@@ -114,6 +178,16 @@ func (c *Client) Script() *Script {
 // Search() returns a Search client
 func (c *Client) Search() *Search {
 	return &Search{c}
+}
+
+// Selenium() returns a Selenium client
+func (c *Client) Selenium() *Selenium {
+	return &Selenium{c}
+}
+
+// Soap() returns a Soap client
+func (c *Client) Soap() *Soap {
+	return &Soap{c}
 }
 
 // Spider() returns a Spider client
@@ -129,4 +203,14 @@ func (c *Client) Stats() *Stats {
 // Users() returns a Users client
 func (c *Client) Users() *Users {
 	return &Users{c}
+}
+
+// Wappalyzer() returns a Wappalyzer client
+func (c *Client) Wappalyzer() *Wappalyzer {
+	return &Wappalyzer{c}
+}
+
+// Websocket() returns a Websocket client
+func (c *Client) Websocket() *Websocket {
+	return &Websocket{c}
 }
