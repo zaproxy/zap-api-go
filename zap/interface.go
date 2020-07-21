@@ -31,6 +31,7 @@ type Interface interface {
 	Core() *Core
 	ForcedUser() *ForcedUser
 	HttpSessions() *HttpSessions
+	Openapi() *Openapi
 	Params() *Params
 	Pscan() *Pscan
 	Script() *Script
@@ -88,6 +89,11 @@ func (c *Client) ForcedUser() *ForcedUser {
 // HttpSessions() returns a HttpSessions client
 func (c *Client) HttpSessions() *HttpSessions {
 	return &HttpSessions{c}
+}
+
+// Openapi() returns a Openapi clinet
+func (c *Client) Openapi() *Openapi {
+	return &Openapi{c}
 }
 
 // Params() returns a Params client
