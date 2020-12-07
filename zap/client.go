@@ -33,6 +33,7 @@ const (
 	DefaultHTTPSBase      = "https://zap/JSON/"
 	DefaultHTTPSBaseOther = "https://zap/OTHER/"
 	DefaultProxy          = "tcp://127.0.0.1:8080"
+	NoHTTPStatus          = -1
 	ZAP_API_KEY_PARAM     = "apikey"
 	ZAP_API_KEY_HEADER    = "X-ZAP-API-Key"
 )
@@ -83,7 +84,7 @@ func NewClient(cfg *Config) (Interface, error) {
 
 // Request sends HTTP request to zap base("http://zap/JSON/") API group
 func (c *Client) Request(path string, queryParams map[string]string) (map[string]interface{}, error) {
-	body, err := c.request(c.Base+path, queryParams)
+	status, body, err := c.request(c.Base+path, queryParams)
 	if err != nil {
 		return nil, err
 	}
@@ -93,18 +94,25 @@ func (c *Client) Request(path string, queryParams map[string]string) (map[string
 	if err := json.Unmarshal(body, &obj); err != nil {
 		return nil, err
 	}
-	return obj, nil
+	// set error as indicated by http status code
+	if status == NoHTTPStatus || status >= 400 {
+		// post the full response, vs only obj["code"] and obj["message"]
+		err = fmt.Errorf("API http status: %v, response: %v", status, obj)
+	}
+	return obj, err
 }
 
 // RequestOther sends HTTP request to zap other("http://zap/OTHER/") API group
 func (c *Client) RequestOther(path string, queryParams map[string]string) ([]byte, error) {
-	return c.request(c.BaseOther+path, queryParams)
+	_, r, err := c.request(c.BaseOther+path, queryParams)
+	return r, err
 }
 
-func (c *Client) request(path string, queryParams map[string]string) ([]byte, error) {
+// request returns NoHTTPStatus on failure, message response bytes, and error if applicable
+func (c *Client) request(path string, queryParams map[string]string) (int, []byte, error) {
 	req, err := http.NewRequest("GET", path, nil)
 	if err != nil {
-		return nil, err
+		return NoHTTPStatus, nil, err
 	}
 
 	if len(queryParams) == 0 {
@@ -131,8 +139,9 @@ func (c *Client) request(path string, queryParams map[string]string) ([]byte, er
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("Errored when sending request to the server: %v", err)
+		return NoHTTPStatus, nil, fmt.Errorf("Errored when sending request to the server: %v", err)
 	}
 	defer resp.Body.Close()
-	return ioutil.ReadAll(resp.Body)
+	r, err := ioutil.ReadAll(resp.Body)
+	return resp.StatusCode, r, err
 }
