@@ -21,5 +21,5 @@ func (a Automation) PlanProgress(planId string) (map[string]interface{}, error) 
 	m := map[string]string{
 		"planId": planId,
 	}
-	return a.c.Zap.Request("automation/view/planProgress/", m)
+	return a.c.Request("automation/view/planProgress/", m)
 }
