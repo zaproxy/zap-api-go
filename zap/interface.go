@@ -28,6 +28,7 @@ type Interface interface {
 	Ascan() *Ascan
 	Authentication() *Authentication
 	Authorization() *Authorization
+	Automation() *Automation
 	Autoupdate() *Autoupdate
 	Break() *Break
 	Context() *Context
@@ -93,6 +94,11 @@ func (c *Client) Authorization() *Authorization {
 // Autoupdate returns an Autoupdate client
 func (c *Client) Autoupdate() *Autoupdate {
 	return &Autoupdate{c}
+}
+
+// Automation() returns an Automation client
+func (c *Client) Automation() *Automation {
+	return &Automation{c}
 }
 
 // Break() returns a Break client
