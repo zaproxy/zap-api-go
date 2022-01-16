@@ -43,6 +43,7 @@ type Interface interface {
 	Pnh() *Pnh
 	Pscan() *Pscan
 	Replacer() *Replacer
+	Reports() *Reports
 	Reveal() *Reveal
 	Revisit() *Revisit
 	Script() *Script
@@ -164,6 +165,11 @@ func (c *Client) Pscan() *Pscan {
 // Replacer() returns a Replacer client
 func (c *Client) Replacer() *Replacer {
 	return &Replacer{c}
+}
+
+// Reports() returns a Reports client
+func (c *Client) Reports() *Reports {
+	return &Reports{c}
 }
 
 // Reveal() returns a Reveal client

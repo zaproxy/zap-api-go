@@ -123,3 +123,40 @@ func (a AlertFilter) RemoveGlobalAlertFilter(ruleid string, newlevel string, url
 	}
 	return a.c.Request("alertFilter/action/removeGlobalAlertFilter/", m)
 }
+
+// Applies all currently enabled Global and Context alert filters.
+// This component is optional and therefore the API will only work if it is installed
+
+func (a AlertFilter) ApplyAll() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/applyAll/", nil)
+}
+
+// Applies all currently enabled Context alert filters.
+// This component is optional and therefore the API will only work if it is installed
+func (a AlertFilter) ApplyContext() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/applyContext/", nil)
+}
+
+// Applies all currently enabled Global alert filters.
+// This component is optional and therefore the API will only work if it is installed
+func (a AlertFilter) ApplyGlobal() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/applyGlobal/", nil)
+}
+
+// Tests all currently enabled Global and Context alert filters.
+// This component is optional and therefore the API will only work if it is installed
+func (a AlertFilter) TestAll() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/testAll/", nil)
+}
+
+// Tests all currently enabled Context alert filters.
+// This component is optional and therefore the API will only work if it is installed
+func (a AlertFilter) TestContext() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/testContext/", nil)
+}
+
+// Tests all currently enabled Global alert filters.
+// This component is optional and therefore the API will only work if it is installed
+func (a AlertFilter) TestGlobal() (map[string]interface{}, error) {
+	return a.c.Request("alertFilter/action/testGlobal/", nil)
+}
