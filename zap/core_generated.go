@@ -27,42 +27,6 @@ type Core struct {
 	c *Client
 }
 
-// Gets the alert with the given ID, the corresponding HTTP message can be obtained with the 'messageId' field and 'message' API method
-func (c Core) Alert(id string) (map[string]interface{}, error) {
-	m := map[string]string{
-		"id": id,
-	}
-	return c.c.Request("core/view/alert/", m)
-}
-
-// Gets the alerts raised by ZAP, optionally filtering by URL or riskId, and paginating with 'start' position and 'count' of alerts
-func (c Core) Alerts(baseurl string, start string, count string, riskid string) (map[string]interface{}, error) {
-	m := map[string]string{
-		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
-		"riskId":  riskid,
-	}
-	return c.c.Request("core/view/alerts/", m)
-}
-
-// Gets number of alerts grouped by each risk level, optionally filtering by URL
-func (c Core) AlertsSummary(baseurl string) (map[string]interface{}, error) {
-	m := map[string]string{
-		"baseurl": baseurl,
-	}
-	return c.c.Request("core/view/alertsSummary/", m)
-}
-
-// Gets the number of alerts, optionally filtering by URL or riskId
-func (c Core) NumberOfAlerts(baseurl string, riskid string) (map[string]interface{}, error) {
-	m := map[string]string{
-		"baseurl": baseurl,
-		"riskId":  riskid,
-	}
-	return c.c.Request("core/view/numberOfAlerts/", m)
-}
-
 // Gets the name of the hosts accessed through/by ZAP
 func (c Core) Hosts() (map[string]interface{}, error) {
 	return c.c.Request("core/view/hosts/", nil)
@@ -321,19 +285,6 @@ func (c Core) SendRequest(request string, followredirects string) (map[string]in
 		"followRedirects": followredirects,
 	}
 	return c.c.Request("core/action/sendRequest/", m)
-}
-
-// Deletes all alerts of the current session.
-func (c Core) DeleteAllAlerts() (map[string]interface{}, error) {
-	return c.c.Request("core/action/deleteAllAlerts/", nil)
-}
-
-// Deletes the alert with the given ID.
-func (c Core) DeleteAlert(id string) (map[string]interface{}, error) {
-	m := map[string]string{
-		"id": id,
-	}
-	return c.c.Request("core/action/deleteAlert/", m)
 }
 
 func (c Core) RunGarbageCollection() (map[string]interface{}, error) {
