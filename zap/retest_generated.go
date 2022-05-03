@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,14 +21,14 @@
 
 package zap
 
-type Params struct {
+type Retest struct {
 	c *Client
 }
 
-// Shows the parameters for the specified site, or for all sites if the site is not specified
-func (p Params) Params(site string) (map[string]interface{}, error) {
+// This component is optional and therefore the API will only work if it is installed
+func (r Retest) Retest(alertids string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site": site,
+		"alertIds": alertids,
 	}
-	return p.c.Request("params/view/params/", m)
+	return r.c.Request("retest/action/retest/", m)
 }

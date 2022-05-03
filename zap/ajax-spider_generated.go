@@ -27,6 +27,13 @@ type AjaxSpider struct {
 	c *Client
 }
 
+// Gets the allowed resources. The allowed resources are always fetched even if out of scope, allowing to include necessary resources (e.g. scripts) from 3rd-parties.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) AllowedResources() (map[string]interface{}, error) {
+	return a.c.Request("ajaxSpider/view/allowedResources/", nil)
+}
+
 // Gets the current status of the crawler. Actual values are Stopped and Running.
 //
 // This component is optional and therefore the API will only work if it is installed
@@ -160,6 +167,38 @@ func (a AjaxSpider) ScanAsUser(contextname string, username string, url string, 
 // This component is optional and therefore the API will only work if it is installed
 func (a AjaxSpider) Stop() (map[string]interface{}, error) {
 	return a.c.Request("ajaxSpider/action/stop/", nil)
+}
+
+// Adds an allowed resource.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) AddAllowedResource(regex string, enabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex":   regex,
+		"enabled": enabled,
+	}
+	return a.c.Request("ajaxSpider/action/addAllowedResource/", m)
+}
+
+// Removes an allowed resource.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) RemoveAllowedResource(regex string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex": regex,
+	}
+	return a.c.Request("ajaxSpider/action/removeAllowedResource/", m)
+}
+
+// Sets whether or not an allowed resource is enabled.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) SetEnabledAllowedResource(regex string, enabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex":   regex,
+		"enabled": enabled,
+	}
+	return a.c.Request("ajaxSpider/action/setEnabledAllowedResource/", m)
 }
 
 // Sets the configuration of the AJAX Spider to use one of the supported browsers.
