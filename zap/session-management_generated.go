@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,10 +25,12 @@ type SessionManagement struct {
 	c *Client
 }
 
+// Gets the name of the session management methods.
 func (s SessionManagement) GetSupportedSessionManagementMethods() (map[string]interface{}, error) {
 	return s.c.Request("sessionManagement/view/getSupportedSessionManagementMethods/", nil)
 }
 
+// Gets the configuration parameters for the session management method with the given name.
 func (s SessionManagement) GetSessionManagementMethodConfigParams(methodname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"methodName": methodname,
@@ -36,6 +38,7 @@ func (s SessionManagement) GetSessionManagementMethodConfigParams(methodname str
 	return s.c.Request("sessionManagement/view/getSessionManagementMethodConfigParams/", m)
 }
 
+// Gets the name of the session management method for the context with the given ID.
 func (s SessionManagement) GetSessionManagementMethod(contextid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
@@ -43,6 +46,7 @@ func (s SessionManagement) GetSessionManagementMethod(contextid string) (map[str
 	return s.c.Request("sessionManagement/view/getSessionManagementMethod/", m)
 }
 
+// Sets the session management method for the context with the given ID.
 func (s SessionManagement) SetSessionManagementMethod(contextid string, methodname string, methodconfigparams string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId":          contextid,

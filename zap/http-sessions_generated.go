@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -53,6 +53,11 @@ func (h HttpSessions) SessionTokens(site string) (map[string]interface{}, error)
 		"site": site,
 	}
 	return h.c.Request("httpSessions/view/sessionTokens/", m)
+}
+
+// Gets the default session tokens.
+func (h HttpSessions) DefaultSessionTokens() (map[string]interface{}, error) {
+	return h.c.Request("httpSessions/view/defaultSessionTokens/", nil)
 }
 
 // Creates an empty session for the given site. Optionally with the given name.
@@ -127,4 +132,30 @@ func (h HttpSessions) RenameSession(site string, oldsessionname string, newsessi
 		"newSessionName": newsessionname,
 	}
 	return h.c.Request("httpSessions/action/renameSession/", m)
+}
+
+// Adds a default session token with the given name and enabled state.
+func (h HttpSessions) AddDefaultSessionToken(sessiontoken string, tokenenabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+		"tokenEnabled": tokenenabled,
+	}
+	return h.c.Request("httpSessions/action/addDefaultSessionToken/", m)
+}
+
+// Sets whether or not the default session token with the given name is enabled.
+func (h HttpSessions) SetDefaultSessionTokenEnabled(sessiontoken string, tokenenabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+		"tokenEnabled": tokenenabled,
+	}
+	return h.c.Request("httpSessions/action/setDefaultSessionTokenEnabled/", m)
+}
+
+// Removes the default session token with the given name.
+func (h HttpSessions) RemoveDefaultSessionToken(sessiontoken string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+	}
+	return h.c.Request("httpSessions/action/removeDefaultSessionToken/", m)
 }
