@@ -129,6 +129,9 @@ func (c *Client) request(path string, queryParams map[string]string) ([]byte, er
 	// add API Key header
 	req.Header.Add(ZAP_API_KEY_HEADER, c.APIKey)
 
+	// Close the connection
+	req.Close = true
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("Errored when sending request to the server: %v", err)
