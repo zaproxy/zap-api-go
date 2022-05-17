@@ -163,11 +163,6 @@ func (c *Client) LocalProxies() *LocalProxies {
 	return &LocalProxies{c}
 }
 
-// Network() returns a Network client
-func (c *Client) Network() *Network {
-	return &Network{c}
-}
-
 // Openapi() returns a Openapi clinet
 func (c *Client) Openapi() *Openapi {
 	return &Openapi{c}
