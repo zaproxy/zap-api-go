@@ -132,7 +132,6 @@ func (c Core) OptionAlertOverridesFilePath() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionAlertOverridesFilePath/", nil)
 }
 
-//
 func (c Core) HomeDirectory() (map[string]interface{}, error) {
 	return c.c.Request("core/view/homeDirectory/", nil)
 }
@@ -198,32 +197,26 @@ func (c Core) OptionDnsTtlSuccessfulQueries() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionDnsTtlSuccessfulQueries/", nil)
 }
 
-//
 func (c Core) OptionHttpState() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionHttpState/", nil)
 }
 
-//
 func (c Core) OptionProxyChainName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainName/", nil)
 }
 
-//
 func (c Core) OptionProxyChainPassword() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPassword/", nil)
 }
 
-//
 func (c Core) OptionProxyChainPort() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPort/", nil)
 }
 
-//
 func (c Core) OptionProxyChainRealm() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainRealm/", nil)
 }
 
-//
 func (c Core) OptionProxyChainUserName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainUserName/", nil)
 }
@@ -233,27 +226,22 @@ func (c Core) OptionTimeoutInSecs() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionTimeoutInSecs/", nil)
 }
 
-//
 func (c Core) OptionHttpStateEnabled() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionHttpStateEnabled/", nil)
 }
 
-//
 func (c Core) OptionProxyChainPrompt() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPrompt/", nil)
 }
 
-//
 func (c Core) OptionSingleCookieRequestHeader() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionSingleCookieRequestHeader/", nil)
 }
 
-//
 func (c Core) OptionUseProxyChain() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionUseProxyChain/", nil)
 }
 
-//
 func (c Core) OptionUseProxyChainAuth() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionUseProxyChainAuth/", nil)
 }
@@ -325,7 +313,6 @@ func (c Core) ExcludeFromProxy(regex string) (map[string]interface{}, error) {
 	return c.c.Request("core/action/excludeFromProxy/", m)
 }
 
-//
 func (c Core) SetHomeDirectory(dir string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"dir": dir,
@@ -355,7 +342,6 @@ func (c Core) SendRequest(request string, followredirects string) (map[string]in
 	return c.c.Request("core/action/sendRequest/", m)
 }
 
-//
 func (c Core) RunGarbageCollection() (map[string]interface{}, error) {
 	return c.c.Request("core/action/runGarbageCollection/", nil)
 }
@@ -469,7 +455,6 @@ func (c Core) SetOptionDefaultUserAgent(str string) (map[string]interface{}, err
 	return c.c.Request("core/action/setOptionDefaultUserAgent/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -477,7 +462,6 @@ func (c Core) SetOptionProxyChainName(str string) (map[string]interface{}, error
 	return c.c.Request("core/action/setOptionProxyChainName/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainPassword(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -485,7 +469,6 @@ func (c Core) SetOptionProxyChainPassword(str string) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainPassword/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainRealm(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -501,7 +484,6 @@ func (c Core) SetOptionProxyChainSkipName(str string) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainSkipName/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainUserName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -517,7 +499,6 @@ func (c Core) SetOptionDnsTtlSuccessfulQueries(i int) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionDnsTtlSuccessfulQueries/", m)
 }
 
-//
 func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -525,7 +506,6 @@ func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionHttpStateEnabled/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -533,7 +513,6 @@ func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
 	return c.c.Request("core/action/setOptionProxyChainPort/", m)
 }
 
-//
 func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -541,7 +520,6 @@ func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainPrompt/", m)
 }
 
-//
 func (c Core) SetOptionSingleCookieRequestHeader(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -565,7 +543,6 @@ func (c Core) SetOptionUseProxyChain(boolean bool) (map[string]interface{}, erro
 	return c.c.Request("core/action/setOptionUseProxyChain/", m)
 }
 
-//
 func (c Core) SetOptionUseProxyChainAuth(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -581,7 +558,6 @@ func (c Core) SetOptionUseSocksProxy(boolean bool) (map[string]interface{}, erro
 	return c.c.Request("core/action/setOptionUseSocksProxy/", m)
 }
 
-//
 func (c Core) Proxypac() ([]byte, error) {
 	return c.c.RequestOther("core/other/proxy.pac/", nil)
 }
@@ -591,7 +567,6 @@ func (c Core) Rootcert() ([]byte, error) {
 	return c.c.RequestOther("core/other/rootcert/", nil)
 }
 
-//
 func (c Core) Setproxy(proxy string) ([]byte, error) {
 	m := map[string]string{
 		"proxy": proxy,
