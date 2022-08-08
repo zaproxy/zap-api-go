@@ -27,7 +27,6 @@ type Spider struct {
 	c *Client
 }
 
-//
 func (s Spider) Status(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -35,7 +34,6 @@ func (s Spider) Status(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/view/status/", m)
 }
 
-//
 func (s Spider) Results(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -43,7 +41,6 @@ func (s Spider) Results(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/view/results/", m)
 }
 
-//
 func (s Spider) FullResults(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -51,7 +48,6 @@ func (s Spider) FullResults(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/view/fullResults/", m)
 }
 
-//
 func (s Spider) Scans() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/scans/", nil)
 }
@@ -89,7 +85,6 @@ func (s Spider) OptionDomainsAlwaysInScopeEnabled() (map[string]interface{}, err
 	return s.c.Request("spider/view/optionDomainsAlwaysInScopeEnabled/", nil)
 }
 
-//
 func (s Spider) OptionHandleParameters() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionHandleParameters/", nil)
 }
@@ -104,7 +99,6 @@ func (s Spider) OptionMaxDepth() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionMaxDepth/", nil)
 }
 
-//
 func (s Spider) OptionMaxDuration() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionMaxDuration/", nil)
 }
@@ -114,37 +108,30 @@ func (s Spider) OptionMaxParseSizeBytes() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionMaxParseSizeBytes/", nil)
 }
 
-//
 func (s Spider) OptionMaxScansInUI() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionMaxScansInUI/", nil)
 }
 
-//
 func (s Spider) OptionRequestWaitTime() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionRequestWaitTime/", nil)
 }
 
-//
 func (s Spider) OptionScope() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionScope/", nil)
 }
 
-//
 func (s Spider) OptionScopeText() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionScopeText/", nil)
 }
 
-//
 func (s Spider) OptionSkipURLString() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionSkipURLString/", nil)
 }
 
-//
 func (s Spider) OptionThreadCount() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionThreadCount/", nil)
 }
 
-//
 func (s Spider) OptionUserAgent() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionUserAgent/", nil)
 }
@@ -154,42 +141,34 @@ func (s Spider) OptionAcceptCookies() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionAcceptCookies/", nil)
 }
 
-//
 func (s Spider) OptionHandleODataParametersVisited() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionHandleODataParametersVisited/", nil)
 }
 
-//
 func (s Spider) OptionParseComments() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionParseComments/", nil)
 }
 
-//
 func (s Spider) OptionParseGit() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionParseGit/", nil)
 }
 
-//
 func (s Spider) OptionParseRobotsTxt() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionParseRobotsTxt/", nil)
 }
 
-//
 func (s Spider) OptionParseSVNEntries() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionParseSVNEntries/", nil)
 }
 
-//
 func (s Spider) OptionParseSitemapXml() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionParseSitemapXml/", nil)
 }
 
-//
 func (s Spider) OptionPostForm() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionPostForm/", nil)
 }
 
-//
 func (s Spider) OptionProcessForm() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionProcessForm/", nil)
 }
@@ -199,7 +178,6 @@ func (s Spider) OptionSendRefererHeader() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionSendRefererHeader/", nil)
 }
 
-//
 func (s Spider) OptionShowAdvancedDialog() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionShowAdvancedDialog/", nil)
 }
@@ -229,7 +207,6 @@ func (s Spider) ScanAsUser(contextid string, userid string, url string, maxchild
 	return s.c.Request("spider/action/scanAsUser/", m)
 }
 
-//
 func (s Spider) Pause(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -237,7 +214,6 @@ func (s Spider) Pause(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/pause/", m)
 }
 
-//
 func (s Spider) Resume(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -245,7 +221,6 @@ func (s Spider) Resume(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/resume/", m)
 }
 
-//
 func (s Spider) Stop(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -253,7 +228,6 @@ func (s Spider) Stop(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/stop/", m)
 }
 
-//
 func (s Spider) RemoveScan(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -261,22 +235,18 @@ func (s Spider) RemoveScan(scanid string) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/removeScan/", m)
 }
 
-//
 func (s Spider) PauseAllScans() (map[string]interface{}, error) {
 	return s.c.Request("spider/action/pauseAllScans/", nil)
 }
 
-//
 func (s Spider) ResumeAllScans() (map[string]interface{}, error) {
 	return s.c.Request("spider/action/resumeAllScans/", nil)
 }
 
-//
 func (s Spider) StopAllScans() (map[string]interface{}, error) {
 	return s.c.Request("spider/action/stopAllScans/", nil)
 }
 
-//
 func (s Spider) RemoveAllScans() (map[string]interface{}, error) {
 	return s.c.Request("spider/action/removeAllScans/", nil)
 }
@@ -333,7 +303,6 @@ func (s Spider) DisableAllDomainsAlwaysInScope() (map[string]interface{}, error)
 	return s.c.Request("spider/action/disableAllDomainsAlwaysInScope/", nil)
 }
 
-//
 func (s Spider) SetOptionHandleParameters(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -349,7 +318,6 @@ func (s Spider) SetOptionScopeString(str string) (map[string]interface{}, error)
 	return s.c.Request("spider/action/setOptionScopeString/", m)
 }
 
-//
 func (s Spider) SetOptionSkipURLString(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -357,7 +325,6 @@ func (s Spider) SetOptionSkipURLString(str string) (map[string]interface{}, erro
 	return s.c.Request("spider/action/setOptionSkipURLString/", m)
 }
 
-//
 func (s Spider) SetOptionUserAgent(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -373,7 +340,6 @@ func (s Spider) SetOptionAcceptCookies(boolean bool) (map[string]interface{}, er
 	return s.c.Request("spider/action/setOptionAcceptCookies/", m)
 }
 
-//
 func (s Spider) SetOptionHandleODataParametersVisited(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -397,7 +363,6 @@ func (s Spider) SetOptionMaxDepth(i int) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/setOptionMaxDepth/", m)
 }
 
-//
 func (s Spider) SetOptionMaxDuration(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -413,7 +378,6 @@ func (s Spider) SetOptionMaxParseSizeBytes(i int) (map[string]interface{}, error
 	return s.c.Request("spider/action/setOptionMaxParseSizeBytes/", m)
 }
 
-//
 func (s Spider) SetOptionMaxScansInUI(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -421,7 +385,6 @@ func (s Spider) SetOptionMaxScansInUI(i int) (map[string]interface{}, error) {
 	return s.c.Request("spider/action/setOptionMaxScansInUI/", m)
 }
 
-//
 func (s Spider) SetOptionParseComments(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -429,7 +392,6 @@ func (s Spider) SetOptionParseComments(boolean bool) (map[string]interface{}, er
 	return s.c.Request("spider/action/setOptionParseComments/", m)
 }
 
-//
 func (s Spider) SetOptionParseGit(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -437,7 +399,6 @@ func (s Spider) SetOptionParseGit(boolean bool) (map[string]interface{}, error) 
 	return s.c.Request("spider/action/setOptionParseGit/", m)
 }
 
-//
 func (s Spider) SetOptionParseRobotsTxt(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -445,7 +406,6 @@ func (s Spider) SetOptionParseRobotsTxt(boolean bool) (map[string]interface{}, e
 	return s.c.Request("spider/action/setOptionParseRobotsTxt/", m)
 }
 
-//
 func (s Spider) SetOptionParseSVNEntries(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -453,7 +413,6 @@ func (s Spider) SetOptionParseSVNEntries(boolean bool) (map[string]interface{}, 
 	return s.c.Request("spider/action/setOptionParseSVNEntries/", m)
 }
 
-//
 func (s Spider) SetOptionParseSitemapXml(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -461,7 +420,6 @@ func (s Spider) SetOptionParseSitemapXml(boolean bool) (map[string]interface{}, 
 	return s.c.Request("spider/action/setOptionParseSitemapXml/", m)
 }
 
-//
 func (s Spider) SetOptionPostForm(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -469,7 +427,6 @@ func (s Spider) SetOptionPostForm(boolean bool) (map[string]interface{}, error) 
 	return s.c.Request("spider/action/setOptionPostForm/", m)
 }
 
-//
 func (s Spider) SetOptionProcessForm(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -477,7 +434,6 @@ func (s Spider) SetOptionProcessForm(boolean bool) (map[string]interface{}, erro
 	return s.c.Request("spider/action/setOptionProcessForm/", m)
 }
 
-//
 func (s Spider) SetOptionRequestWaitTime(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -493,7 +449,6 @@ func (s Spider) SetOptionSendRefererHeader(boolean bool) (map[string]interface{}
 	return s.c.Request("spider/action/setOptionSendRefererHeader/", m)
 }
 
-//
 func (s Spider) SetOptionShowAdvancedDialog(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -501,7 +456,6 @@ func (s Spider) SetOptionShowAdvancedDialog(boolean bool) (map[string]interface{
 	return s.c.Request("spider/action/setOptionShowAdvancedDialog/", m)
 }
 
-//
 func (s Spider) SetOptionThreadCount(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
