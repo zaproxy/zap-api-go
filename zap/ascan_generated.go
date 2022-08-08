@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ type Ascan struct {
 	c *Client
 }
 
+//
 func (a Ascan) Status(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -34,6 +35,7 @@ func (a Ascan) Status(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/status/", m)
 }
 
+//
 func (a Ascan) ScanProgress(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -57,10 +59,12 @@ func (a Ascan) AlertsIds(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/alertsIds/", m)
 }
 
+//
 func (a Ascan) Scans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/scans/", nil)
 }
 
+//
 func (a Ascan) ScanPolicyNames() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/scanPolicyNames/", nil)
 }
@@ -70,6 +74,7 @@ func (a Ascan) ExcludedFromScan() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/excludedFromScan/", nil)
 }
 
+// Gets the scanners, optionally, of the given scan policy and/or scanner policy/category ID.
 func (a Ascan) Scanners(scanpolicyname string, policyid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -78,6 +83,7 @@ func (a Ascan) Scanners(scanpolicyname string, policyid string) (map[string]inte
 	return a.c.Request("ascan/view/scanners/", m)
 }
 
+//
 func (a Ascan) Policies(scanpolicyname string, policyid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -86,6 +92,7 @@ func (a Ascan) Policies(scanpolicyname string, policyid string) (map[string]inte
 	return a.c.Request("ascan/view/policies/", m)
 }
 
+//
 func (a Ascan) AttackModeQueue() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/attackModeQueue/", nil)
 }
@@ -105,58 +112,77 @@ func (a Ascan) ExcludedParamTypes() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/excludedParamTypes/", nil)
 }
 
+//
 func (a Ascan) OptionAttackPolicy() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionAttackPolicy/", nil)
 }
 
+//
 func (a Ascan) OptionDefaultPolicy() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionDefaultPolicy/", nil)
 }
 
+//
 func (a Ascan) OptionDelayInMs() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionDelayInMs/", nil)
 }
 
+//
 func (a Ascan) OptionHandleAntiCSRFTokens() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionHandleAntiCSRFTokens/", nil)
 }
 
+//
 func (a Ascan) OptionHostPerScan() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionHostPerScan/", nil)
 }
 
+//
 func (a Ascan) OptionMaxChartTimeInMins() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionMaxChartTimeInMins/", nil)
 }
 
+//
 func (a Ascan) OptionMaxResultsToList() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionMaxResultsToList/", nil)
 }
 
+//
 func (a Ascan) OptionMaxRuleDurationInMins() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionMaxRuleDurationInMins/", nil)
 }
 
+//
 func (a Ascan) OptionMaxScanDurationInMins() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionMaxScanDurationInMins/", nil)
 }
 
+//
 func (a Ascan) OptionMaxScansInUI() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionMaxScansInUI/", nil)
 }
 
+//
 func (a Ascan) OptionTargetParamsEnabledRPC() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionTargetParamsEnabledRPC/", nil)
 }
 
+//
 func (a Ascan) OptionTargetParamsInjectable() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionTargetParamsInjectable/", nil)
 }
 
+//
 func (a Ascan) OptionThreadPerHost() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionThreadPerHost/", nil)
 }
 
+// Tells whether or not the active scanner should add a query parameter to GET request that don't have parameters to start with.
+func (a Ascan) OptionAddQueryParam() (map[string]interface{}, error) {
+	return a.c.Request("ascan/view/optionAddQueryParam/", nil)
+}
+
+//
 func (a Ascan) OptionAllowAttackOnStart() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionAllowAttackOnStart/", nil)
 }
@@ -166,14 +192,17 @@ func (a Ascan) OptionInjectPluginIdInHeader() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionInjectPluginIdInHeader/", nil)
 }
 
+//
 func (a Ascan) OptionPromptInAttackMode() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionPromptInAttackMode/", nil)
 }
 
+//
 func (a Ascan) OptionPromptToClearFinishedScans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionPromptToClearFinishedScans/", nil)
 }
 
+//
 func (a Ascan) OptionRescanInAttackMode() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionRescanInAttackMode/", nil)
 }
@@ -183,6 +212,12 @@ func (a Ascan) OptionScanHeadersAllRequests() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionScanHeadersAllRequests/", nil)
 }
 
+// Tells whether or not the active scanner should scan null JSON values.
+func (a Ascan) OptionScanNullJsonValues() (map[string]interface{}, error) {
+	return a.c.Request("ascan/view/optionScanNullJsonValues/", nil)
+}
+
+//
 func (a Ascan) OptionShowAdvancedDialog() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionShowAdvancedDialog/", nil)
 }
@@ -215,6 +250,7 @@ func (a Ascan) ScanAsUser(url string, contextid string, userid string, recurse s
 	return a.c.Request("ascan/action/scanAsUser/", m)
 }
 
+//
 func (a Ascan) Pause(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -222,6 +258,7 @@ func (a Ascan) Pause(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/pause/", m)
 }
 
+//
 func (a Ascan) Resume(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -229,6 +266,7 @@ func (a Ascan) Resume(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/resume/", m)
 }
 
+//
 func (a Ascan) Stop(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -236,6 +274,7 @@ func (a Ascan) Stop(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/stop/", m)
 }
 
+//
 func (a Ascan) RemoveScan(scanid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanId": scanid,
@@ -243,18 +282,22 @@ func (a Ascan) RemoveScan(scanid string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/removeScan/", m)
 }
 
+//
 func (a Ascan) PauseAllScans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/pauseAllScans/", nil)
 }
 
+//
 func (a Ascan) ResumeAllScans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/resumeAllScans/", nil)
 }
 
+//
 func (a Ascan) StopAllScans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/stopAllScans/", nil)
 }
 
+//
 func (a Ascan) RemoveAllScans() (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/removeAllScans/", nil)
 }
@@ -272,6 +315,7 @@ func (a Ascan) ExcludeFromScan(regex string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/excludeFromScan/", m)
 }
 
+// Enables all scanners of the scan policy with the given name, or the default if none given.
 func (a Ascan) EnableAllScanners(scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -279,6 +323,7 @@ func (a Ascan) EnableAllScanners(scanpolicyname string) (map[string]interface{},
 	return a.c.Request("ascan/action/enableAllScanners/", m)
 }
 
+// Disables all scanners of the scan policy with the given name, or the default if none given.
 func (a Ascan) DisableAllScanners(scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -286,6 +331,7 @@ func (a Ascan) DisableAllScanners(scanpolicyname string) (map[string]interface{}
 	return a.c.Request("ascan/action/disableAllScanners/", m)
 }
 
+// Enables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 func (a Ascan) EnableScanners(ids string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids":            ids,
@@ -294,6 +340,7 @@ func (a Ascan) EnableScanners(ids string, scanpolicyname string) (map[string]int
 	return a.c.Request("ascan/action/enableScanners/", m)
 }
 
+// Disables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 func (a Ascan) DisableScanners(ids string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids":            ids,
@@ -302,6 +349,7 @@ func (a Ascan) DisableScanners(ids string, scanpolicyname string) (map[string]in
 	return a.c.Request("ascan/action/disableScanners/", m)
 }
 
+//
 func (a Ascan) SetEnabledPolicies(ids string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids":            ids,
@@ -310,6 +358,7 @@ func (a Ascan) SetEnabledPolicies(ids string, scanpolicyname string) (map[string
 	return a.c.Request("ascan/action/setEnabledPolicies/", m)
 }
 
+//
 func (a Ascan) SetPolicyAttackStrength(id string, attackstrength string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"id":             id,
@@ -319,6 +368,7 @@ func (a Ascan) SetPolicyAttackStrength(id string, attackstrength string, scanpol
 	return a.c.Request("ascan/action/setPolicyAttackStrength/", m)
 }
 
+//
 func (a Ascan) SetPolicyAlertThreshold(id string, alertthreshold string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"id":             id,
@@ -328,6 +378,7 @@ func (a Ascan) SetPolicyAlertThreshold(id string, alertthreshold string, scanpol
 	return a.c.Request("ascan/action/setPolicyAlertThreshold/", m)
 }
 
+//
 func (a Ascan) SetScannerAttackStrength(id string, attackstrength string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"id":             id,
@@ -337,6 +388,7 @@ func (a Ascan) SetScannerAttackStrength(id string, attackstrength string, scanpo
 	return a.c.Request("ascan/action/setScannerAttackStrength/", m)
 }
 
+//
 func (a Ascan) SetScannerAlertThreshold(id string, alertthreshold string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"id":             id,
@@ -346,6 +398,7 @@ func (a Ascan) SetScannerAlertThreshold(id string, alertthreshold string, scanpo
 	return a.c.Request("ascan/action/setScannerAlertThreshold/", m)
 }
 
+//
 func (a Ascan) AddScanPolicy(scanpolicyname string, alertthreshold string, attackstrength string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -355,6 +408,7 @@ func (a Ascan) AddScanPolicy(scanpolicyname string, alertthreshold string, attac
 	return a.c.Request("ascan/action/addScanPolicy/", m)
 }
 
+//
 func (a Ascan) RemoveScanPolicy(scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -362,6 +416,7 @@ func (a Ascan) RemoveScanPolicy(scanpolicyname string) (map[string]interface{}, 
 	return a.c.Request("ascan/action/removeScanPolicy/", m)
 }
 
+//
 func (a Ascan) UpdateScanPolicy(scanpolicyname string, alertthreshold string, attackstrength string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -417,6 +472,7 @@ func (a Ascan) SkipScanner(scanid string, scannerid string) (map[string]interfac
 	return a.c.Request("ascan/action/skipScanner/", m)
 }
 
+//
 func (a Ascan) SetOptionAttackPolicy(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -424,6 +480,7 @@ func (a Ascan) SetOptionAttackPolicy(str string) (map[string]interface{}, error)
 	return a.c.Request("ascan/action/setOptionAttackPolicy/", m)
 }
 
+//
 func (a Ascan) SetOptionDefaultPolicy(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -431,6 +488,15 @@ func (a Ascan) SetOptionDefaultPolicy(str string) (map[string]interface{}, error
 	return a.c.Request("ascan/action/setOptionDefaultPolicy/", m)
 }
 
+// Sets whether or not the active scanner should add a query param to GET requests which do not have parameters to start with.
+func (a Ascan) SetOptionAddQueryParam(boolean bool) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Boolean": strconv.FormatBool(boolean),
+	}
+	return a.c.Request("ascan/action/setOptionAddQueryParam/", m)
+}
+
+//
 func (a Ascan) SetOptionAllowAttackOnStart(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -438,6 +504,7 @@ func (a Ascan) SetOptionAllowAttackOnStart(boolean bool) (map[string]interface{}
 	return a.c.Request("ascan/action/setOptionAllowAttackOnStart/", m)
 }
 
+//
 func (a Ascan) SetOptionDelayInMs(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -445,6 +512,7 @@ func (a Ascan) SetOptionDelayInMs(i int) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/setOptionDelayInMs/", m)
 }
 
+//
 func (a Ascan) SetOptionHandleAntiCSRFTokens(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -452,6 +520,7 @@ func (a Ascan) SetOptionHandleAntiCSRFTokens(boolean bool) (map[string]interface
 	return a.c.Request("ascan/action/setOptionHandleAntiCSRFTokens/", m)
 }
 
+//
 func (a Ascan) SetOptionHostPerScan(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -467,6 +536,7 @@ func (a Ascan) SetOptionInjectPluginIdInHeader(boolean bool) (map[string]interfa
 	return a.c.Request("ascan/action/setOptionInjectPluginIdInHeader/", m)
 }
 
+//
 func (a Ascan) SetOptionMaxChartTimeInMins(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -474,6 +544,7 @@ func (a Ascan) SetOptionMaxChartTimeInMins(i int) (map[string]interface{}, error
 	return a.c.Request("ascan/action/setOptionMaxChartTimeInMins/", m)
 }
 
+//
 func (a Ascan) SetOptionMaxResultsToList(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -481,6 +552,7 @@ func (a Ascan) SetOptionMaxResultsToList(i int) (map[string]interface{}, error) 
 	return a.c.Request("ascan/action/setOptionMaxResultsToList/", m)
 }
 
+//
 func (a Ascan) SetOptionMaxRuleDurationInMins(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -488,6 +560,7 @@ func (a Ascan) SetOptionMaxRuleDurationInMins(i int) (map[string]interface{}, er
 	return a.c.Request("ascan/action/setOptionMaxRuleDurationInMins/", m)
 }
 
+//
 func (a Ascan) SetOptionMaxScanDurationInMins(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -495,6 +568,7 @@ func (a Ascan) SetOptionMaxScanDurationInMins(i int) (map[string]interface{}, er
 	return a.c.Request("ascan/action/setOptionMaxScanDurationInMins/", m)
 }
 
+//
 func (a Ascan) SetOptionMaxScansInUI(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -502,6 +576,7 @@ func (a Ascan) SetOptionMaxScansInUI(i int) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/setOptionMaxScansInUI/", m)
 }
 
+//
 func (a Ascan) SetOptionPromptInAttackMode(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -509,6 +584,7 @@ func (a Ascan) SetOptionPromptInAttackMode(boolean bool) (map[string]interface{}
 	return a.c.Request("ascan/action/setOptionPromptInAttackMode/", m)
 }
 
+//
 func (a Ascan) SetOptionPromptToClearFinishedScans(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -516,6 +592,7 @@ func (a Ascan) SetOptionPromptToClearFinishedScans(boolean bool) (map[string]int
 	return a.c.Request("ascan/action/setOptionPromptToClearFinishedScans/", m)
 }
 
+//
 func (a Ascan) SetOptionRescanInAttackMode(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -531,6 +608,15 @@ func (a Ascan) SetOptionScanHeadersAllRequests(boolean bool) (map[string]interfa
 	return a.c.Request("ascan/action/setOptionScanHeadersAllRequests/", m)
 }
 
+// Sets whether or not the active scanner should scan null JSON values.
+func (a Ascan) SetOptionScanNullJsonValues(boolean bool) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Boolean": strconv.FormatBool(boolean),
+	}
+	return a.c.Request("ascan/action/setOptionScanNullJsonValues/", m)
+}
+
+//
 func (a Ascan) SetOptionShowAdvancedDialog(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -538,6 +624,7 @@ func (a Ascan) SetOptionShowAdvancedDialog(boolean bool) (map[string]interface{}
 	return a.c.Request("ascan/action/setOptionShowAdvancedDialog/", m)
 }
 
+//
 func (a Ascan) SetOptionTargetParamsEnabledRPC(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -545,6 +632,7 @@ func (a Ascan) SetOptionTargetParamsEnabledRPC(i int) (map[string]interface{}, e
 	return a.c.Request("ascan/action/setOptionTargetParamsEnabledRPC/", m)
 }
 
+//
 func (a Ascan) SetOptionTargetParamsInjectable(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -552,6 +640,7 @@ func (a Ascan) SetOptionTargetParamsInjectable(i int) (map[string]interface{}, e
 	return a.c.Request("ascan/action/setOptionTargetParamsInjectable/", m)
 }
 
+//
 func (a Ascan) SetOptionThreadPerHost(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),

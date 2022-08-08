@@ -25,6 +25,11 @@ type Selenium struct {
 	c *Client
 }
 
+// This component is optional and therefore the API will only work if it is installed
+func (s Selenium) OptionBrowserExtensions() (map[string]interface{}, error) {
+	return s.c.Request("selenium/view/optionBrowserExtensions/", nil)
+}
+
 // Returns the current path to ChromeDriver
 //
 // This component is optional and therefore the API will only work if it is installed
@@ -49,6 +54,11 @@ func (s Selenium) OptionFirefoxDriverPath() (map[string]interface{}, error) {
 // This component is optional and therefore the API will only work if it is installed
 func (s Selenium) OptionIeDriverPath() (map[string]interface{}, error) {
 	return s.c.Request("selenium/view/optionIeDriverPath/", nil)
+}
+
+// This component is optional and therefore the API will only work if it is installed
+func (s Selenium) OptionLastDirectory() (map[string]interface{}, error) {
+	return s.c.Request("selenium/view/optionLastDirectory/", nil)
 }
 
 // Returns the current path to PhantomJS binary
@@ -94,6 +104,14 @@ func (s Selenium) SetOptionIeDriverPath(str string) (map[string]interface{}, err
 		"String": str,
 	}
 	return s.c.Request("selenium/action/setOptionIeDriverPath/", m)
+}
+
+// This component is optional and therefore the API will only work if it is installed
+func (s Selenium) SetOptionLastDirectory(str string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"String": str,
+	}
+	return s.c.Request("selenium/action/setOptionLastDirectory/", m)
 }
 
 // Sets the current path to PhantomJS binary

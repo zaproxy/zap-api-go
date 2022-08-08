@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -75,6 +75,14 @@ func (c Context) ExcludedTechnologyList(contextname string) (map[string]interfac
 	return c.c.Request("context/view/excludedTechnologyList/", m)
 }
 
+// Lists the URLs accessed through/by ZAP, that belong to the context with the given name.
+func (c Context) Urls(contextname string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+	}
+	return c.c.Request("context/view/urls/", m)
+}
+
 // Add exclude regex to context
 func (c Context) ExcludeFromContext(contextname string, regex string) (map[string]interface{}, error) {
 	m := map[string]string{
@@ -91,6 +99,30 @@ func (c Context) IncludeInContext(contextname string, regex string) (map[string]
 		"regex":       regex,
 	}
 	return c.c.Request("context/action/includeInContext/", m)
+}
+
+// Set the regexs to include and exclude for a context, both supplied as JSON string arrays
+func (c Context) SetContextRegexs(contextname string, incregexs string, excregexs string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+		"incRegexs":   incregexs,
+		"excRegexs":   excregexs,
+	}
+	return c.c.Request("context/action/setContextRegexs/", m)
+}
+
+// Set the checking strategy for a context - this defines how ZAP checks that a request is authenticated
+func (c Context) SetContextCheckingStrategy(contextname string, checkingstrategy string, pollurl string, polldata string, pollheaders string, pollfrequency string, pollfrequencyunits string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName":        contextname,
+		"checkingStrategy":   checkingstrategy,
+		"pollUrl":            pollurl,
+		"pollData":           polldata,
+		"pollHeaders":        pollheaders,
+		"pollFrequency":      pollfrequency,
+		"pollFrequencyUnits": pollfrequencyunits,
+	}
+	return c.c.Request("context/action/setContextCheckingStrategy/", m)
 }
 
 // Creates a new context with the given name in the current session

@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,26 +24,33 @@ type Interface interface {
 	AccessControl() *AccessControl
 	Acsrf() *Acsrf
 	AjaxSpider() *AjaxSpider
+	Alert() *Alert
 	AlertFilter() *AlertFilter
 	Ascan() *Ascan
 	Authentication() *Authentication
 	Authorization() *Authorization
+	Automation() *Automation
 	Autoupdate() *Autoupdate
 	Break() *Break
 	Context() *Context
 	Core() *Core
 	Exportreport() *Exportreport
 	ForcedUser() *ForcedUser
+	Graphql() *Graphql
 	HttpSessions() *HttpSessions
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
+	LocalProxies() *LocalProxies
 	Openapi() *Openapi
 	Params() *Params
 	Pnh() *Pnh
 	Pscan() *Pscan
 	Replacer() *Replacer
+	Reports() *Reports
+	Retest() *Retest
 	Reveal() *Reveal
 	Revisit() *Revisit
+	RuleConfig() *RuleConfig
 	Script() *Script
 	Search() *Search
 	Selenium() *Selenium
@@ -68,6 +75,11 @@ func (c *Client) Acsrf() *Acsrf {
 // AjaxSpider() returns a AjaxSpider client
 func (c *Client) AjaxSpider() *AjaxSpider {
 	return &AjaxSpider{c}
+}
+
+// Alert() returns a Alert client
+func (c *Client) Alert() *Alert {
+	return &Alert{c}
 }
 
 // AlertFilter() returns a AlertFilter client
@@ -95,6 +107,11 @@ func (c *Client) Autoupdate() *Autoupdate {
 	return &Autoupdate{c}
 }
 
+// Automation() returns an Automation client
+func (c *Client) Automation() *Automation {
+	return &Automation{c}
+}
+
 // Break() returns a Break client
 func (c *Client) Break() *Break {
 	return &Break{c}
@@ -120,6 +137,11 @@ func (c *Client) ForcedUser() *ForcedUser {
 	return &ForcedUser{c}
 }
 
+// Graphql() returns a Graphql client
+func (c *Client) Graphql() *Graphql {
+	return &Graphql{c}
+}
+
 // HttpSessions() returns a HttpSessions client
 func (c *Client) HttpSessions() *HttpSessions {
 	return &HttpSessions{c}
@@ -133,6 +155,11 @@ func (c *Client) ImportLogFiles() *ImportLogFiles {
 // Importurls() returns a Importurls client
 func (c *Client) Importurls() *Importurls {
 	return &Importurls{c}
+}
+
+// LocalProxies() returns a LocalProxies client
+func (c *Client) LocalProxies() *LocalProxies {
+	return &LocalProxies{c}
 }
 
 // Openapi() returns a Openapi clinet
@@ -160,6 +187,16 @@ func (c *Client) Replacer() *Replacer {
 	return &Replacer{c}
 }
 
+// Reports() returns a Reports client
+func (c *Client) Reports() *Reports {
+	return &Reports{c}
+}
+
+// Retest() returns a Retest client
+func (c *Client) Retest() *Retest {
+	return &Retest{c}
+}
+
 // Reveal() returns a Reveal client
 func (c *Client) Reveal() *Reveal {
 	return &Reveal{c}
@@ -168,6 +205,11 @@ func (c *Client) Reveal() *Reveal {
 // Revisit() returns a Revisit client
 func (c *Client) Revisit() *Revisit {
 	return &Revisit{c}
+}
+
+// RuleConfig() returns a RuleConfig client
+func (c *Client) RuleConfig() *RuleConfig {
+	return &RuleConfig{c}
 }
 
 // Script() returns a Script client

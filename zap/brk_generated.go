@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ func (b Break) SetHttpMessage(httpheader string, httpbody string) (map[string]in
 	return b.c.Request("break/action/setHttpMessage/", m)
 }
 
-// Submits the currently intercepted message and unsets the global request/response break points
+// Submits the currently intercepted message and unsets the global request/response breakpoints
 func (b Break) Cont() (map[string]interface{}, error) {
 	return b.c.Request("break/action/continue/", nil)
 }
@@ -79,7 +79,7 @@ func (b Break) Drop() (map[string]interface{}, error) {
 	return b.c.Request("break/action/drop/", nil)
 }
 
-// Adds a custom HTTP breakpont. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.
+// Adds a custom HTTP breakpoint. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.
 func (b Break) AddHttpBreakpoint(str string, location string, match string, inverse string, ignorecase string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"string":     str,
@@ -91,7 +91,7 @@ func (b Break) AddHttpBreakpoint(str string, location string, match string, inve
 	return b.c.Request("break/action/addHttpBreakpoint/", m)
 }
 
-// Removes the specified break point
+// Removes the specified breakpoint
 func (b Break) RemoveHttpBreakpoint(str string, location string, match string, inverse string, ignorecase string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"string":     str,
