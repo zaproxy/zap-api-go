@@ -48,3 +48,4 @@ func (w Wappalyzer) ListSite(site string) (map[string]interface{}, error) {
 	}
 	return w.c.Request("wappalyzer/view/listSite/", m)
 }
+

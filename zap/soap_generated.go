@@ -44,3 +44,4 @@ func (s Soap) ImportUrl(url string) (map[string]interface{}, error) {
 	}
 	return s.c.Request("soap/action/importUrl/", m)
 }
+

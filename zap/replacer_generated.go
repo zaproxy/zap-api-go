@@ -32,18 +32,19 @@ func (r Replacer) Rules() (map[string]interface{}, error) {
 	return r.c.Request("replacer/view/rules/", nil)
 }
 
-// Adds a replacer rule. For the parameters: desc is a user friendly description, enabled is true or false, matchType is one of [REQ_HEADER, REQ_HEADER_STR, REQ_BODY_STR, RESP_HEADER, RESP_HEADER_STR, RESP_BODY_STR], matchRegex should be true if the matchString should be treated as a regex otherwise false, matchString is the string that will be matched against, replacement is the replacement string, initiators may be blank (for all initiators) or a comma separated list of integers as defined in <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/network/HttpSender.java">HttpSender</a>
+// Adds a replacer rule. For the parameters: desc is a user friendly description, enabled is true or false, matchType is one of [REQ_HEADER, REQ_HEADER_STR, REQ_BODY_STR, RESP_HEADER, RESP_HEADER_STR, RESP_BODY_STR], matchRegex should be true if the matchString should be treated as a regex otherwise false, matchString is the string that will be matched against, replacement is the replacement string, initiators may be blank (for all initiators) or a comma separated list of integers as defined in <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/network/HttpSender.java">HttpSender</a>  
 //
 // This component is optional and therefore the API will only work if it is installed
-func (r Replacer) AddRule(description string, enabled string, matchtype string, matchregex string, matchstring string, replacement string, initiators string) (map[string]interface{}, error) {
+func (r Replacer) AddRule(description string, enabled string, matchtype string, matchregex string, matchstring string, replacement string, initiators string, url string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"description": description,
-		"enabled":     enabled,
-		"matchType":   matchtype,
-		"matchRegex":  matchregex,
+		"enabled": enabled,
+		"matchType": matchtype,
+		"matchRegex": matchregex,
 		"matchString": matchstring,
 		"replacement": replacement,
-		"initiators":  initiators,
+		"initiators": initiators,
+		"url": url,
 	}
 	return r.c.Request("replacer/action/addRule/", m)
 }
@@ -58,13 +59,14 @@ func (r Replacer) RemoveRule(description string) (map[string]interface{}, error)
 	return r.c.Request("replacer/action/removeRule/", m)
 }
 
-// Enables or disables the rule with the given description based on the bool parameter
+// Enables or disables the rule with the given description based on the bool parameter  
 //
 // This component is optional and therefore the API will only work if it is installed
 func (r Replacer) SetEnabled(description string, bool string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"description": description,
-		"bool":        bool,
+		"bool": bool,
 	}
 	return r.c.Request("replacer/action/setEnabled/", m)
 }
+

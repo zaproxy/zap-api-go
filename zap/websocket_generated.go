@@ -48,9 +48,9 @@ func (w Websocket) Message(channelid string, messageid string) (map[string]inter
 // This component is optional and therefore the API will only work if it is installed
 func (w Websocket) Messages(channelid string, start string, count string, payloadpreviewlength string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"channelId":            channelid,
-		"start":                start,
-		"count":                count,
+		"channelId": channelid,
+		"start": start,
+		"count": count,
 		"payloadPreviewLength": payloadpreviewlength,
 	}
 	return w.c.Request("websocket/view/messages/", m)
@@ -69,8 +69,8 @@ func (w Websocket) BreakTextMessage() (map[string]interface{}, error) {
 func (w Websocket) SendTextMessage(channelid string, outgoing string, message string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"channelId": channelid,
-		"outgoing":  outgoing,
-		"message":   message,
+		"outgoing": outgoing,
+		"message": message,
 	}
 	return w.c.Request("websocket/action/sendTextMessage/", m)
 }
@@ -80,8 +80,9 @@ func (w Websocket) SendTextMessage(channelid string, outgoing string, message st
 // This component is optional and therefore the API will only work if it is installed
 func (w Websocket) SetBreakTextMessage(message string, outgoing string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"message":  message,
+		"message": message,
 		"outgoing": outgoing,
 	}
 	return w.c.Request("websocket/action/setBreakTextMessage/", m)
 }
+

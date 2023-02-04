@@ -30,8 +30,8 @@ type Openapi struct {
 // This component is optional and therefore the API will only work if it is installed
 func (o Openapi) ImportFile(file string, target string, contextid string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"file":      file,
-		"target":    target,
+		"file": file,
+		"target": target,
 		"contextId": contextid,
 	}
 	return o.c.Request("openapi/action/importFile/", m)
@@ -42,9 +42,10 @@ func (o Openapi) ImportFile(file string, target string, contextid string) (map[s
 // This component is optional and therefore the API will only work if it is installed
 func (o Openapi) ImportUrl(url string, hostoverride string, contextid string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"url":          url,
+		"url": url,
 		"hostOverride": hostoverride,
-		"contextId":    contextid,
+		"contextId": contextid,
 	}
 	return o.c.Request("openapi/action/importUrl/", m)
 }
+

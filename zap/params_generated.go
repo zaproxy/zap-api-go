@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,3 +32,4 @@ func (p Params) Params(site string) (map[string]interface{}, error) {
 	}
 	return p.c.Request("params/view/params/", m)
 }
+

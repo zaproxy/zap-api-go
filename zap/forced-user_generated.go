@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ func (f ForcedUser) GetForcedUser(contextid string) (map[string]interface{}, err
 func (f ForcedUser) SetForcedUser(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId":    userid,
+		"userId": userid,
 	}
 	return f.c.Request("forcedUser/action/setForcedUser/", m)
 }
@@ -56,3 +56,4 @@ func (f ForcedUser) SetForcedUserModeEnabled(boolean bool) (map[string]interface
 	}
 	return f.c.Request("forcedUser/action/setForcedUserModeEnabled/", m)
 }
+

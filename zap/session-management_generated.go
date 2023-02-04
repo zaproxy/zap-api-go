@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,9 +49,10 @@ func (s SessionManagement) GetSessionManagementMethod(contextid string) (map[str
 // Sets the session management method for the context with the given ID.
 func (s SessionManagement) SetSessionManagementMethod(contextid string, methodname string, methodconfigparams string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId":          contextid,
-		"methodName":         methodname,
+		"contextId": contextid,
+		"methodName": methodname,
 		"methodConfigParams": methodconfigparams,
 	}
 	return s.c.Request("sessionManagement/action/setSessionManagementMethod/", m)
 }
+

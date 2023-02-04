@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,8 +54,9 @@ func (r RuleConfig) ResetAllRuleConfigValues() (map[string]interface{}, error) {
 // Set the specified rule configuration, which must already exist
 func (r RuleConfig) SetRuleConfigValue(key string, value string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"key":   key,
+		"key": key,
 		"value": value,
 	}
 	return r.c.Request("ruleConfig/action/setRuleConfigValue/", m)
 }
+

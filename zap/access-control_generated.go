@@ -50,22 +50,23 @@ func (a AccessControl) GetScanStatus(contextid string) (map[string]interface{}, 
 // This component is optional and therefore the API will only work if it is installed
 func (a AccessControl) Scan(contextid string, userid string, scanasunauthuser string, raisealert string, alertrisklevel string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId":        contextid,
-		"userId":           userid,
+		"contextId": contextid,
+		"userId": userid,
 		"scanAsUnAuthUser": scanasunauthuser,
-		"raiseAlert":       raisealert,
-		"alertRiskLevel":   alertrisklevel,
+		"raiseAlert": raisealert,
+		"alertRiskLevel": alertrisklevel,
 	}
 	return a.c.Request("accessControl/action/scan/", m)
 }
 
-// Generates an Access Control report for the given context ID and saves it based on the provided filename (path).
+// Generates an Access Control report for the given context ID and saves it based on the provided filename (path). 
 //
 // This component is optional and therefore the API will only work if it is installed
 func (a AccessControl) WriteHTMLreport(contextid string, filename string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"fileName":  filename,
+		"fileName": filename,
 	}
 	return a.c.Request("accessControl/action/writeHTMLreport/", m)
 }
+

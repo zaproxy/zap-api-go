@@ -32,3 +32,4 @@ func (r Retest) Retest(alertids string) (map[string]interface{}, error) {
 	}
 	return r.c.Request("retest/action/retest/", m)
 }
+

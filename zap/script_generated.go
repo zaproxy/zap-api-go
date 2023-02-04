@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ func (s Script) GlobalCustomVars() (map[string]interface{}, error) {
 func (s Script) ScriptVar(scriptname string, varkey string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scriptName": scriptname,
-		"varKey":     varkey,
+		"varKey": varkey,
 	}
 	return s.c.Request("script/view/scriptVar/", m)
 }
@@ -79,7 +79,7 @@ func (s Script) ScriptVar(scriptname string, varkey string) (map[string]interfac
 func (s Script) ScriptCustomVar(scriptname string, varkey string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scriptName": scriptname,
-		"varKey":     varkey,
+		"varKey": varkey,
 	}
 	return s.c.Request("script/view/scriptCustomVar/", m)
 }
@@ -119,12 +119,12 @@ func (s Script) Disable(scriptname string) (map[string]interface{}, error) {
 // Loads a script into ZAP from the given local file, with the given name, type and engine, optionally with a description, and a charset name to read the script (the charset name is required if the script is not in UTF-8, for example, in ISO-8859-1).
 func (s Script) Load(scriptname string, scripttype string, scriptengine string, filename string, scriptdescription string, charset string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"scriptName":        scriptname,
-		"scriptType":        scripttype,
-		"scriptEngine":      scriptengine,
-		"fileName":          filename,
+		"scriptName": scriptname,
+		"scriptType": scripttype,
+		"scriptEngine": scriptengine,
+		"fileName": filename,
 		"scriptDescription": scriptdescription,
-		"charset":           charset,
+		"charset": charset,
 	}
 	return s.c.Request("script/action/load/", m)
 }
@@ -170,7 +170,7 @@ func (s Script) ClearGlobalVars() (map[string]interface{}, error) {
 func (s Script) ClearScriptVar(scriptname string, varkey string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scriptName": scriptname,
-		"varKey":     varkey,
+		"varKey": varkey,
 	}
 	return s.c.Request("script/action/clearScriptVar/", m)
 }
@@ -179,7 +179,7 @@ func (s Script) ClearScriptVar(scriptname string, varkey string) (map[string]int
 func (s Script) ClearScriptCustomVar(scriptname string, varkey string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scriptName": scriptname,
-		"varKey":     varkey,
+		"varKey": varkey,
 	}
 	return s.c.Request("script/action/clearScriptCustomVar/", m)
 }
@@ -196,8 +196,8 @@ func (s Script) ClearScriptVars(scriptname string) (map[string]interface{}, erro
 func (s Script) SetScriptVar(scriptname string, varkey string, varvalue string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scriptName": scriptname,
-		"varKey":     varkey,
-		"varValue":   varvalue,
+		"varKey": varkey,
+		"varValue": varvalue,
 	}
 	return s.c.Request("script/action/setScriptVar/", m)
 }
@@ -205,8 +205,9 @@ func (s Script) SetScriptVar(scriptname string, varkey string, varvalue string) 
 // Sets the value of the global variable with the given key.
 func (s Script) SetGlobalVar(varkey string, varvalue string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"varKey":   varkey,
+		"varKey": varkey,
 		"varValue": varvalue,
 	}
 	return s.c.Request("script/action/setGlobalVar/", m)
 }
+

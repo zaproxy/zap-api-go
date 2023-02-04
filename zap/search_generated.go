@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,10 +28,10 @@ type Search struct {
 // Returns the URLs of the HTTP messages that match the given regular expression in the URL optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) UrlsByUrlRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/urlsByUrlRegex/", m)
 }
@@ -39,10 +39,10 @@ func (s Search) UrlsByUrlRegex(regex string, baseurl string, start string, count
 // Returns the URLs of the HTTP messages that match the given regular expression in the request optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) UrlsByRequestRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/urlsByRequestRegex/", m)
 }
@@ -50,10 +50,10 @@ func (s Search) UrlsByRequestRegex(regex string, baseurl string, start string, c
 // Returns the URLs of the HTTP messages that match the given regular expression in the response optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) UrlsByResponseRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/urlsByResponseRegex/", m)
 }
@@ -61,10 +61,10 @@ func (s Search) UrlsByResponseRegex(regex string, baseurl string, start string, 
 // Returns the URLs of the HTTP messages that match the given regular expression in the header(s) optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) UrlsByHeaderRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/urlsByHeaderRegex/", m)
 }
@@ -72,10 +72,10 @@ func (s Search) UrlsByHeaderRegex(regex string, baseurl string, start string, co
 // Returns the HTTP messages that match the given regular expression in the URL optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) MessagesByUrlRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/messagesByUrlRegex/", m)
 }
@@ -83,10 +83,10 @@ func (s Search) MessagesByUrlRegex(regex string, baseurl string, start string, c
 // Returns the HTTP messages that match the given regular expression in the request optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) MessagesByRequestRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/messagesByRequestRegex/", m)
 }
@@ -94,10 +94,10 @@ func (s Search) MessagesByRequestRegex(regex string, baseurl string, start strin
 // Returns the HTTP messages that match the given regular expression in the response optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) MessagesByResponseRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/messagesByResponseRegex/", m)
 }
@@ -105,10 +105,10 @@ func (s Search) MessagesByResponseRegex(regex string, baseurl string, start stri
 // Returns the HTTP messages that match the given regular expression in the header(s) optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) MessagesByHeaderRegex(regex string, baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.Request("search/view/messagesByHeaderRegex/", m)
 }
@@ -116,10 +116,10 @@ func (s Search) MessagesByHeaderRegex(regex string, baseurl string, start string
 // Returns the HTTP messages, in HAR format, that match the given regular expression in the URL optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) HarByUrlRegex(regex string, baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.RequestOther("search/other/harByUrlRegex/", m)
 }
@@ -127,10 +127,10 @@ func (s Search) HarByUrlRegex(regex string, baseurl string, start string, count 
 // Returns the HTTP messages, in HAR format, that match the given regular expression in the request optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) HarByRequestRegex(regex string, baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.RequestOther("search/other/harByRequestRegex/", m)
 }
@@ -138,10 +138,10 @@ func (s Search) HarByRequestRegex(regex string, baseurl string, start string, co
 // Returns the HTTP messages, in HAR format, that match the given regular expression in the response optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) HarByResponseRegex(regex string, baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.RequestOther("search/other/harByResponseRegex/", m)
 }
@@ -149,10 +149,11 @@ func (s Search) HarByResponseRegex(regex string, baseurl string, start string, c
 // Returns the HTTP messages, in HAR format, that match the given regular expression in the header(s) optionally filtered by URL and paginated with 'start' position and 'count' of messages.
 func (s Search) HarByHeaderRegex(regex string, baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
-		"regex":   regex,
+		"regex": regex,
 		"baseurl": baseurl,
-		"start":   start,
-		"count":   count,
+		"start": start,
+		"count": count,
 	}
 	return s.c.RequestOther("search/other/harByHeaderRegex/", m)
 }
+

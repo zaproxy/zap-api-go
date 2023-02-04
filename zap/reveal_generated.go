@@ -41,3 +41,4 @@ func (r Reveal) SetReveal(reveal string) (map[string]interface{}, error) {
 	}
 	return r.c.Request("reveal/action/setReveal/", m)
 }
+

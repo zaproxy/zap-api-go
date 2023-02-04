@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,14 +33,15 @@ func (a Authorization) GetAuthorizationDetectionMethod(contextid string) (map[st
 	return a.c.Request("authorization/view/getAuthorizationDetectionMethod/", m)
 }
 
-// Sets the authorization detection method for a context as one that identifies un-authorized messages based on: the message's status code or a regex pattern in the response's header or body. Also, whether all conditions must match or just some can be specified via the logicalOperator parameter, which accepts two values: "AND" (default), "OR".
+// Sets the authorization detection method for a context as one that identifies un-authorized messages based on: the message's status code or a regex pattern in the response's header or body. Also, whether all conditions must match or just some can be specified via the logicalOperator parameter, which accepts two values: "AND" (default), "OR".  
 func (a Authorization) SetBasicAuthorizationDetectionMethod(contextid string, headerregex string, bodyregex string, statuscode string, logicaloperator string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId":       contextid,
-		"headerRegex":     headerregex,
-		"bodyRegex":       bodyregex,
-		"statusCode":      statuscode,
+		"contextId": contextid,
+		"headerRegex": headerregex,
+		"bodyRegex": bodyregex,
+		"statusCode": statuscode,
 		"logicalOperator": logicaloperator,
 	}
 	return a.c.Request("authorization/action/setBasicAuthorizationDetectionMethod/", m)
 }
+

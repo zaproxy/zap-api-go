@@ -89,7 +89,7 @@ func (g Graphql) OptionRequestMethod() (map[string]interface{}, error) {
 func (g Graphql) ImportFile(endurl string, file string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"endurl": endurl,
-		"file":   file,
+		"file": file,
 	}
 	return g.c.Request("graphql/action/importFile/", m)
 }
@@ -100,7 +100,7 @@ func (g Graphql) ImportFile(endurl string, file string) (map[string]interface{},
 func (g Graphql) ImportUrl(endurl string, url string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"endurl": endurl,
-		"url":    url,
+		"url": url,
 	}
 	return g.c.Request("graphql/action/importUrl/", m)
 }
@@ -184,3 +184,4 @@ func (g Graphql) SetOptionOptionalArgsEnabled(boolean bool) (map[string]interfac
 	}
 	return g.c.Request("graphql/action/setOptionOptionalArgsEnabled/", m)
 }
+
