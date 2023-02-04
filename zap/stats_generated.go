@@ -46,7 +46,7 @@ func (s Stats) AllSitesStats(keyprefix string) (map[string]interface{}, error) {
 // Gets all of the global statistics, optionally filtered by a key prefix
 func (s Stats) SiteStats(site string, keyprefix string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site": site,
+		"site":      site,
 		"keyPrefix": keyprefix,
 	}
 	return s.c.Request("stats/view/siteStats/", m)
@@ -116,4 +116,3 @@ func (s Stats) SetOptionStatsdPort(i int) (map[string]interface{}, error) {
 	}
 	return s.c.Request("stats/action/setOptionStatsdPort/", m)
 }
-

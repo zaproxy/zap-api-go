@@ -37,7 +37,7 @@ func (u Users) UsersList(contextid string) (map[string]interface{}, error) {
 func (u Users) GetUserById(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/view/getUserById/", m)
 }
@@ -54,7 +54,7 @@ func (u Users) GetAuthenticationCredentialsConfigParams(contextid string) (map[s
 func (u Users) GetAuthenticationCredentials(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/view/getAuthenticationCredentials/", m)
 }
@@ -63,7 +63,7 @@ func (u Users) GetAuthenticationCredentials(contextid string, userid string) (ma
 func (u Users) GetAuthenticationState(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/view/getAuthenticationState/", m)
 }
@@ -72,7 +72,7 @@ func (u Users) GetAuthenticationState(contextid string, userid string) (map[stri
 func (u Users) GetAuthenticationSession(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/view/getAuthenticationSession/", m)
 }
@@ -81,7 +81,7 @@ func (u Users) GetAuthenticationSession(contextid string, userid string) (map[st
 func (u Users) NewUser(contextid string, name string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"name": name,
+		"name":      name,
 	}
 	return u.c.Request("users/action/newUser/", m)
 }
@@ -90,7 +90,7 @@ func (u Users) NewUser(contextid string, name string) (map[string]interface{}, e
 func (u Users) RemoveUser(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/action/removeUser/", m)
 }
@@ -99,8 +99,8 @@ func (u Users) RemoveUser(contextid string, userid string) (map[string]interface
 func (u Users) SetUserEnabled(contextid string, userid string, enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
-		"enabled": enabled,
+		"userId":    userid,
+		"enabled":   enabled,
 	}
 	return u.c.Request("users/action/setUserEnabled/", m)
 }
@@ -109,8 +109,8 @@ func (u Users) SetUserEnabled(contextid string, userid string, enabled string) (
 func (u Users) SetUserName(contextid string, userid string, name string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
-		"name": name,
+		"userId":    userid,
+		"name":      name,
 	}
 	return u.c.Request("users/action/setUserName/", m)
 }
@@ -118,8 +118,8 @@ func (u Users) SetUserName(contextid string, userid string, name string) (map[st
 // Sets the authentication credentials for the user with the given ID that belongs to the context with the given ID.
 func (u Users) SetAuthenticationCredentials(contextid string, userid string, authcredentialsconfigparams string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
-		"userId": userid,
+		"contextId":                   contextid,
+		"userId":                      userid,
 		"authCredentialsConfigParams": authcredentialsconfigparams,
 	}
 	return u.c.Request("users/action/setAuthenticationCredentials/", m)
@@ -129,7 +129,7 @@ func (u Users) SetAuthenticationCredentials(contextid string, userid string, aut
 func (u Users) AuthenticateAsUser(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/action/authenticateAsUser/", m)
 }
@@ -138,7 +138,7 @@ func (u Users) AuthenticateAsUser(contextid string, userid string) (map[string]i
 func (u Users) PollAsUser(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return u.c.Request("users/action/pollAsUser/", m)
 }
@@ -146,10 +146,10 @@ func (u Users) PollAsUser(contextid string, userid string) (map[string]interface
 // Sets fields in the authentication state for the user identified by the Context and User Ids.
 func (u Users) SetAuthenticationState(contextid string, userid string, lastpollresult string, lastpolltimeinms string, requestssincelastpoll string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
-		"userId": userid,
-		"lastPollResult": lastpollresult,
-		"lastPollTimeInMs": lastpolltimeinms,
+		"contextId":             contextid,
+		"userId":                userid,
+		"lastPollResult":        lastpollresult,
+		"lastPollTimeInMs":      lastpolltimeinms,
 		"requestsSinceLastPoll": requestssincelastpoll,
 	}
 	return u.c.Request("users/action/setAuthenticationState/", m)
@@ -159,13 +159,12 @@ func (u Users) SetAuthenticationState(contextid string, userid string, lastpollr
 func (u Users) SetCookie(contextid string, userid string, domain string, name string, value string, path string, secure string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
-		"domain": domain,
-		"name": name,
-		"value": value,
-		"path": path,
-		"secure": secure,
+		"userId":    userid,
+		"domain":    domain,
+		"name":      name,
+		"value":     value,
+		"path":      path,
+		"secure":    secure,
 	}
 	return u.c.Request("users/action/setCookie/", m)
 }
-

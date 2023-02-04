@@ -64,9 +64,8 @@ func (a Acsrf) SetOptionPartialMatchingEnabled(boolean bool) (map[string]interfa
 // Generate a form for testing lack of anti-CSRF tokens - typically invoked via ZAP
 func (a Acsrf) GenForm(hrefid string, actionurl string) ([]byte, error) {
 	m := map[string]string{
-		"hrefId": hrefid,
+		"hrefId":    hrefid,
 		"actionUrl": actionurl,
 	}
 	return a.c.RequestOther("acsrf/other/genForm/", m)
 }
-

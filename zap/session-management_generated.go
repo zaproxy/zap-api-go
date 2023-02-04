@@ -49,10 +49,9 @@ func (s SessionManagement) GetSessionManagementMethod(contextid string) (map[str
 // Sets the session management method for the context with the given ID.
 func (s SessionManagement) SetSessionManagementMethod(contextid string, methodname string, methodconfigparams string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
-		"methodName": methodname,
+		"contextId":          contextid,
+		"methodName":         methodname,
 		"methodConfigParams": methodconfigparams,
 	}
 	return s.c.Request("sessionManagement/action/setSessionManagementMethod/", m)
 }
-

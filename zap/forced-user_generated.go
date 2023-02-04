@@ -44,7 +44,7 @@ func (f ForcedUser) GetForcedUser(contextid string) (map[string]interface{}, err
 func (f ForcedUser) SetForcedUser(contextid string, userid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextId": contextid,
-		"userId": userid,
+		"userId":    userid,
 	}
 	return f.c.Request("forcedUser/action/setForcedUser/", m)
 }
@@ -56,4 +56,3 @@ func (f ForcedUser) SetForcedUserModeEnabled(boolean bool) (map[string]interface
 	}
 	return f.c.Request("forcedUser/action/setForcedUserModeEnabled/", m)
 }
-

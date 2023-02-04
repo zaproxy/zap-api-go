@@ -65,8 +65,8 @@ func (c Core) Message(id string) (map[string]interface{}, error) {
 func (c Core) Messages(baseurl string, start string, count string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"baseurl": baseurl,
-		"start": start,
-		"count": count,
+		"start":   start,
+		"count":   count,
 	}
 	return c.c.Request("core/view/messages/", m)
 }
@@ -132,7 +132,6 @@ func (c Core) OptionAlertOverridesFilePath() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionAlertOverridesFilePath/", nil)
 }
 
-// 
 func (c Core) HomeDirectory() (map[string]interface{}, error) {
 	return c.c.Request("core/view/homeDirectory/", nil)
 }
@@ -164,9 +163,9 @@ func (c Core) Alert(id string) (map[string]interface{}, error) {
 func (c Core) Alerts(baseurl string, start string, count string, riskid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"baseurl": baseurl,
-		"start": start,
-		"count": count,
-		"riskId": riskid,
+		"start":   start,
+		"count":   count,
+		"riskId":  riskid,
 	}
 	return c.c.Request("core/view/alerts/", m)
 }
@@ -183,7 +182,7 @@ func (c Core) AlertsSummary(baseurl string) (map[string]interface{}, error) {
 func (c Core) NumberOfAlerts(baseurl string, riskid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"baseurl": baseurl,
-		"riskId": riskid,
+		"riskId":  riskid,
 	}
 	return c.c.Request("core/view/numberOfAlerts/", m)
 }
@@ -198,47 +197,38 @@ func (c Core) OptionDnsTtlSuccessfulQueries() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionDnsTtlSuccessfulQueries/", nil)
 }
 
-// 
 func (c Core) OptionHttpState() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionHttpState/", nil)
 }
 
-// 
 func (c Core) OptionHttpStateEnabled() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionHttpStateEnabled/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainName/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainPassword() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPassword/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainPort() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPort/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainPrompt() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPrompt/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainRealm() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainRealm/", nil)
 }
 
-// 
 func (c Core) OptionProxyChainUserName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainUserName/", nil)
 }
 
-// 
 func (c Core) OptionSingleCookieRequestHeader() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionSingleCookieRequestHeader/", nil)
 }
@@ -248,12 +238,10 @@ func (c Core) OptionTimeoutInSecs() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionTimeoutInSecs/", nil)
 }
 
-// 
 func (c Core) OptionUseProxyChain() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionUseProxyChain/", nil)
 }
 
-// 
 func (c Core) OptionUseProxyChainAuth() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionUseProxyChainAuth/", nil)
 }
@@ -266,7 +254,7 @@ func (c Core) OptionUseSocksProxy() (map[string]interface{}, error) {
 // Convenient and simple action to access a URL, optionally following redirections. Returns the request sent and response received and followed redirections, if any. Other actions are available which offer more control on what is sent, like, 'sendRequest' or 'sendHarRequest'.
 func (c Core) AccessUrl(url string, followredirects string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"url": url,
+		"url":             url,
 		"followRedirects": followredirects,
 	}
 	return c.c.Request("core/action/accessUrl/", m)
@@ -280,7 +268,7 @@ func (c Core) Shutdown() (map[string]interface{}, error) {
 // Creates a new session, optionally overwriting existing files. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
 func (c Core) NewSession(name string, overwrite string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"name": name,
+		"name":      name,
 		"overwrite": overwrite,
 	}
 	return c.c.Request("core/action/newSession/", m)
@@ -297,7 +285,7 @@ func (c Core) LoadSession(name string) (map[string]interface{}, error) {
 // Saves the session.
 func (c Core) SaveSession(name string, overwrite string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"name": name,
+		"name":      name,
 		"overwrite": overwrite,
 	}
 	return c.c.Request("core/action/saveSession/", m)
@@ -306,7 +294,7 @@ func (c Core) SaveSession(name string, overwrite string) (map[string]interface{}
 // Snapshots the session, optionally with the given name, and overwriting existing files. If no name is specified the name of the current session with a timestamp appended is used. If a relative path is specified it will be resolved against the "session" directory in ZAP "home" dir.
 func (c Core) SnapshotSession(name string, overwrite string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"name": name,
+		"name":      name,
 		"overwrite": overwrite,
 	}
 	return c.c.Request("core/action/snapshotSession/", m)
@@ -325,7 +313,6 @@ func (c Core) ExcludeFromProxy(regex string) (map[string]interface{}, error) {
 	return c.c.Request("core/action/excludeFromProxy/", m)
 }
 
-// 
 func (c Core) SetHomeDirectory(dir string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"dir": dir,
@@ -349,22 +336,21 @@ func (c Core) GenerateRootCA() (map[string]interface{}, error) {
 // Sends the HTTP request, optionally following redirections. Returns the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
 func (c Core) SendRequest(request string, followredirects string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"request": request,
+		"request":         request,
 		"followRedirects": followredirects,
 	}
 	return c.c.Request("core/action/sendRequest/", m)
 }
 
-// 
 func (c Core) RunGarbageCollection() (map[string]interface{}, error) {
 	return c.c.Request("core/action/runGarbageCollection/", nil)
 }
 
-// Deletes the site node found in the Sites Tree on the basis of the URL, HTTP method, and post data (if applicable and specified). 
+// Deletes the site node found in the Sites Tree on the basis of the URL, HTTP method, and post data (if applicable and specified).
 func (c Core) DeleteSiteNode(url string, method string, postdata string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"url": url,
-		"method": method,
+		"url":      url,
+		"method":   method,
 		"postData": postdata,
 	}
 	return c.c.Request("core/action/deleteSiteNode/", m)
@@ -373,8 +359,8 @@ func (c Core) DeleteSiteNode(url string, method string, postdata string) (map[st
 // Adds a domain to be excluded from the outgoing proxy, using the specified value. Optionally sets if the new entry is enabled (default, true) and whether or not the new value is specified as a regex (default, false).
 func (c Core) AddProxyChainExcludedDomain(value string, isregex string, isenabled string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"value": value,
-		"isRegex": isregex,
+		"value":     value,
+		"isRegex":   isregex,
 		"isEnabled": isenabled,
 	}
 	return c.c.Request("core/action/addProxyChainExcludedDomain/", m)
@@ -383,9 +369,9 @@ func (c Core) AddProxyChainExcludedDomain(value string, isregex string, isenable
 // Modifies a domain excluded from the outgoing proxy. Allows to modify the value, if enabled or if a regex. The domain is selected with its index, which can be obtained with the view proxyChainExcludedDomains.
 func (c Core) ModifyProxyChainExcludedDomain(idx string, value string, isregex string, isenabled string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"idx": idx,
-		"value": value,
-		"isRegex": isregex,
+		"idx":       idx,
+		"value":     value,
+		"isRegex":   isregex,
 		"isEnabled": isenabled,
 	}
 	return c.c.Request("core/action/modifyProxyChainExcludedDomain/", m)
@@ -438,7 +424,7 @@ func (c Core) EnablePKCS12ClientCertificate(filepath string, password string, in
 	m := map[string]string{
 		"filePath": filepath,
 		"password": password,
-		"index": index,
+		"index":    index,
 	}
 	return c.c.Request("core/action/enablePKCS12ClientCertificate/", m)
 }
@@ -453,7 +439,7 @@ func (c Core) DeleteAllAlerts() (map[string]interface{}, error) {
 	return c.c.Request("core/action/deleteAllAlerts/", nil)
 }
 
-// Deletes the alert with the given ID. 
+// Deletes the alert with the given ID.
 func (c Core) DeleteAlert(id string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"id": id,
@@ -477,7 +463,6 @@ func (c Core) SetOptionDnsTtlSuccessfulQueries(i int) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionDnsTtlSuccessfulQueries/", m)
 }
 
-// 
 func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -485,7 +470,6 @@ func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionHttpStateEnabled/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -493,7 +477,6 @@ func (c Core) SetOptionProxyChainName(str string) (map[string]interface{}, error
 	return c.c.Request("core/action/setOptionProxyChainName/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainPassword(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -501,7 +484,6 @@ func (c Core) SetOptionProxyChainPassword(str string) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainPassword/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Integer": strconv.Itoa(i),
@@ -509,7 +491,6 @@ func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
 	return c.c.Request("core/action/setOptionProxyChainPort/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -517,7 +498,6 @@ func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainPrompt/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainRealm(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -533,7 +513,6 @@ func (c Core) SetOptionProxyChainSkipName(str string) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainSkipName/", m)
 }
 
-// 
 func (c Core) SetOptionProxyChainUserName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -541,7 +520,6 @@ func (c Core) SetOptionProxyChainUserName(str string) (map[string]interface{}, e
 	return c.c.Request("core/action/setOptionProxyChainUserName/", m)
 }
 
-// 
 func (c Core) SetOptionSingleCookieRequestHeader(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -565,7 +543,6 @@ func (c Core) SetOptionUseProxyChain(boolean bool) (map[string]interface{}, erro
 	return c.c.Request("core/action/setOptionUseProxyChain/", m)
 }
 
-// 
 func (c Core) SetOptionUseProxyChainAuth(boolean bool) (map[string]interface{}, error) {
 	m := map[string]string{
 		"Boolean": strconv.FormatBool(boolean),
@@ -581,7 +558,6 @@ func (c Core) SetOptionUseSocksProxy(boolean bool) (map[string]interface{}, erro
 	return c.c.Request("core/action/setOptionUseSocksProxy/", m)
 }
 
-// 
 func (c Core) Proxypac() ([]byte, error) {
 	return c.c.RequestOther("core/other/proxy.pac/", nil)
 }
@@ -591,7 +567,6 @@ func (c Core) Rootcert() ([]byte, error) {
 	return c.c.RequestOther("core/other/rootcert/", nil)
 }
 
-// 
 func (c Core) Setproxy(proxy string) ([]byte, error) {
 	m := map[string]string{
 		"proxy": proxy,
@@ -631,8 +606,8 @@ func (c Core) MessageHar(id string) ([]byte, error) {
 func (c Core) MessagesHar(baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
 		"baseurl": baseurl,
-		"start": start,
-		"count": count,
+		"start":   start,
+		"count":   count,
 	}
 	return c.c.RequestOther("core/other/messagesHar/", m)
 }
@@ -648,9 +623,8 @@ func (c Core) MessagesHarById(ids string) ([]byte, error) {
 // Sends the first HAR request entry, optionally following redirections. Returns, in HAR format, the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in 'Safe' mode nor in 'Protected' mode if out of scope.
 func (c Core) SendHarRequest(request string, followredirects string) ([]byte, error) {
 	m := map[string]string{
-		"request": request,
+		"request":         request,
 		"followRedirects": followredirects,
 	}
 	return c.c.RequestOther("core/other/sendHarRequest/", m)
 }
-

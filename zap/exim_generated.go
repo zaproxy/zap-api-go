@@ -71,8 +71,8 @@ func (e Exim) ImportModsec2Logs(filepath string) (map[string]interface{}, error)
 func (e Exim) ExportHar(baseurl string, start string, count string) ([]byte, error) {
 	m := map[string]string{
 		"baseurl": baseurl,
-		"start": start,
-		"count": count,
+		"start":   start,
+		"count":   count,
 	}
 	return e.c.RequestOther("exim/other/exportHar/", m)
 }
@@ -92,9 +92,8 @@ func (e Exim) ExportHarById(ids string) ([]byte, error) {
 // This component is optional and therefore the API will only work if it is installed
 func (e Exim) SendHarRequest(request string, followredirects string) ([]byte, error) {
 	m := map[string]string{
-		"request": request,
+		"request":         request,
 		"followRedirects": followredirects,
 	}
 	return e.c.RequestOther("exim/other/sendHarRequest/", m)
 }
-

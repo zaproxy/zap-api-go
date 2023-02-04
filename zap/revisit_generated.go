@@ -33,9 +33,9 @@ func (r Revisit) RevisitList() (map[string]interface{}, error) {
 // This component is optional and therefore the API will only work if it is installed
 func (r Revisit) RevisitSiteOn(site string, starttime string, endtime string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site": site,
+		"site":      site,
 		"startTime": starttime,
-		"endTime": endtime,
+		"endTime":   endtime,
 	}
 	return r.c.Request("revisit/action/revisitSiteOn/", m)
 }
@@ -47,4 +47,3 @@ func (r Revisit) RevisitSiteOff(site string) (map[string]interface{}, error) {
 	}
 	return r.c.Request("revisit/action/revisitSiteOff/", m)
 }
-

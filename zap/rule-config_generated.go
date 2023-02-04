@@ -54,9 +54,8 @@ func (r RuleConfig) ResetAllRuleConfigValues() (map[string]interface{}, error) {
 // Set the specified rule configuration, which must already exist
 func (r RuleConfig) SetRuleConfigValue(key string, value string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"key": key,
+		"key":   key,
 		"value": value,
 	}
 	return r.c.Request("ruleConfig/action/setRuleConfigValue/", m)
 }
-

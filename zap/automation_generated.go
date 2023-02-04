@@ -45,4 +45,3 @@ func (a Automation) RunPlan(filepath string) (map[string]interface{}, error) {
 func (a Automation) EndDelayJob() (map[string]interface{}, error) {
 	return a.c.Request("automation/action/endDelayJob/", nil)
 }
-

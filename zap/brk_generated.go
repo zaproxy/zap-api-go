@@ -48,7 +48,7 @@ func (b Break) HttpMessage() (map[string]interface{}, error) {
 // Controls the global break functionality. The type may be one of: http-all, http-request or http-response. The state may be true (for turning break on for the specified type) or false (for turning break off). Scope is not currently used.
 func (b Break) Brk(t string, state string, scope string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"type": t,
+		"type":  t,
 		"state": state,
 		"scope": scope,
 	}
@@ -59,7 +59,7 @@ func (b Break) Brk(t string, state string, scope string) (map[string]interface{}
 func (b Break) SetHttpMessage(httpheader string, httpbody string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"httpHeader": httpheader,
-		"httpBody": httpbody,
+		"httpBody":   httpbody,
 	}
 	return b.c.Request("break/action/setHttpMessage/", m)
 }
@@ -79,13 +79,13 @@ func (b Break) Drop() (map[string]interface{}, error) {
 	return b.c.Request("break/action/drop/", nil)
 }
 
-// Adds a custom HTTP breakpoint. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.  
+// Adds a custom HTTP breakpoint. The string is the string to match. Location may be one of: url, request_header, request_body, response_header or response_body. Match may be: contains or regex. Inverse (match) may be true or false. Lastly, ignorecase (when matching the string) may be true or false.
 func (b Break) AddHttpBreakpoint(str string, location string, match string, inverse string, ignorecase string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"string": str,
-		"location": location,
-		"match": match,
-		"inverse": inverse,
+		"string":     str,
+		"location":   location,
+		"match":      match,
+		"inverse":    inverse,
 		"ignorecase": ignorecase,
 	}
 	return b.c.Request("break/action/addHttpBreakpoint/", m)
@@ -94,12 +94,11 @@ func (b Break) AddHttpBreakpoint(str string, location string, match string, inve
 // Removes the specified breakpoint
 func (b Break) RemoveHttpBreakpoint(str string, location string, match string, inverse string, ignorecase string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"string": str,
-		"location": location,
-		"match": match,
-		"inverse": inverse,
+		"string":     str,
+		"location":   location,
+		"match":      match,
+		"inverse":    inverse,
 		"ignorecase": ignorecase,
 	}
 	return b.c.Request("break/action/removeHttpBreakpoint/", m)
 }
-

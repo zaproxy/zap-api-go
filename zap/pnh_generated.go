@@ -28,7 +28,7 @@ type Pnh struct {
 // This component is optional and therefore the API will only work if it is installed
 func (p Pnh) Monitor(id string, message string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"id": id,
+		"id":      id,
 		"message": message,
 	}
 	return p.c.Request("pnh/action/monitor/", m)
@@ -77,4 +77,3 @@ func (p Pnh) Service() ([]byte, error) {
 func (p Pnh) Fx_pnhxpi() ([]byte, error) {
 	return p.c.RequestOther("pnh/other/fx_pnh.xpi/", nil)
 }
-

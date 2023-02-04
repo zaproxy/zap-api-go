@@ -65,8 +65,8 @@ func (a Authentication) GetLoggedOutIndicator(contextid string) (map[string]inte
 // Sets the authentication method for the context with the given ID.
 func (a Authentication) SetAuthenticationMethod(contextid string, authmethodname string, authmethodconfigparams string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
-		"authMethodName": authmethodname,
+		"contextId":              contextid,
+		"authMethodName":         authmethodname,
 		"authMethodConfigParams": authmethodconfigparams,
 	}
 	return a.c.Request("authentication/action/setAuthenticationMethod/", m)
@@ -75,7 +75,7 @@ func (a Authentication) SetAuthenticationMethod(contextid string, authmethodname
 // Sets the logged in indicator for the context with the given ID.
 func (a Authentication) SetLoggedInIndicator(contextid string, loggedinindicatorregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
+		"contextId":              contextid,
 		"loggedInIndicatorRegex": loggedinindicatorregex,
 	}
 	return a.c.Request("authentication/action/setLoggedInIndicator/", m)
@@ -84,9 +84,8 @@ func (a Authentication) SetLoggedInIndicator(contextid string, loggedinindicator
 // Sets the logged out indicator for the context with the given ID.
 func (a Authentication) SetLoggedOutIndicator(contextid string, loggedoutindicatorregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId": contextid,
+		"contextId":               contextid,
 		"loggedOutIndicatorRegex": loggedoutindicatorregex,
 	}
 	return a.c.Request("authentication/action/setLoggedOutIndicator/", m)
 }
-
