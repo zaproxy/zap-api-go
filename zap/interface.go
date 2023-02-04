@@ -34,6 +34,7 @@ type Interface interface {
 	Break() *Break
 	Context() *Context
 	Core() *Core
+	Exim() *Exim
 	Exportreport() *Exportreport
 	ForcedUser() *ForcedUser
 	Graphql() *Graphql
@@ -41,6 +42,7 @@ type Interface interface {
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
 	LocalProxies() *LocalProxies
+	Network() *Network
 	Openapi() *Openapi
 	Params() *Params
 	Pnh() *Pnh
