@@ -1,8 +1,8 @@
 ## How to run example
 
-#### run zaproxy daemon
+#### run ZAP daemon
 ```shell
-docker run --name zap -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.addr.name=.\* -config api.addrs.addr.regex=true
+docker run --name zap -u zap -p 8080:8080 -i ghcr.io/zaproxy/zaproxy:stable zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.disablekey=true -config api.addrs.addr.name=.\* -config api.addrs.addr.regex=true
 ```
 
 #### run bodgeit
