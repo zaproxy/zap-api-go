@@ -1,7 +1,7 @@
-# OWASP ZAP GO API
+# ZAP GO API
 
-The Go implementation to access the [OWASP ZAP API](https://www.zaproxy.org/docs/api/). For more information
-about OWASP ZAP consult the (main) [OWASP ZAP project](https://github.com/zaproxy/zaproxy/).
+The Go implementation to access the [ZAP API](https://www.zaproxy.org/docs/api/). For more information
+about ZAP consult the (main) [ZAP project](https://github.com/zaproxy/zaproxy/).
 
 ## How to Obtain
 
@@ -11,10 +11,10 @@ The latest released version can be downloaded using:
 
 ## Getting Help
 
-For help using OWASP ZAP API refer to:
+For help using ZAP API refer to:
   * [Examples](https://github.com/zaproxy/zap-api-go/tree/master/example) - collection of examples using the library;
   * [API Documentation](https://www.zaproxy.org/docs/api/)
-  * [OWASP ZAP User Group](https://groups.google.com/group/zaproxy-users) - for asking questions;
+  * [ZAP User Group](https://groups.google.com/group/zaproxy-users) - for asking questions;
 
 ## Updating the Generated Files
 
@@ -27,7 +27,7 @@ You should typically generate the core API calls from the latest release tag e.g
 ```
 cd zaproxy
 git fetch upstream -t
-git checkout tags/v2.11.1
+git checkout tags/v2.13.0
 ./gradlew generateGoApiEndpoints
 cd ..
 ```
