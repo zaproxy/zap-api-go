@@ -54,6 +54,7 @@ type Interface interface {
 	Script() *Script
 	Search() *Search
 	Selenium() *Selenium
+	SessionManagement() *SessionManagement
 	Soap() *Soap
 	Spider() *Spider
 	Stats() *Stats
@@ -225,6 +226,11 @@ func (c *Client) Search() *Search {
 // Selenium() returns a Selenium client
 func (c *Client) Selenium() *Selenium {
 	return &Selenium{c}
+}
+
+// SessionManagement() returns a SessionManagement client
+func (c *Client) SessionManagement() *SessionManagement {
+	return &SessionManagement{c}
 }
 
 // Soap() returns a Soap client
