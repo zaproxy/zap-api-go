@@ -30,6 +30,13 @@ func (s Selenium) OptionBrowserExtensions() (map[string]interface{}, error) {
 	return s.c.Request("selenium/view/optionBrowserExtensions/", nil)
 }
 
+// Returns the current path to Chrome binary
+//
+// This component is optional and therefore the API will only work if it is installed
+func (s Selenium) OptionChromeBinaryPath() (map[string]interface{}, error) {
+	return s.c.Request("selenium/view/optionChromeBinaryPath/", nil)
+}
+
 // Returns the current path to ChromeDriver
 //
 // This component is optional and therefore the API will only work if it is installed
@@ -66,6 +73,16 @@ func (s Selenium) OptionLastDirectory() (map[string]interface{}, error) {
 // This component is optional and therefore the API will only work if it is installed
 func (s Selenium) OptionPhantomJsBinaryPath() (map[string]interface{}, error) {
 	return s.c.Request("selenium/view/optionPhantomJsBinaryPath/", nil)
+}
+
+// Sets the current path to Chrome binary
+//
+// This component is optional and therefore the API will only work if it is installed
+func (s Selenium) SetOptionChromeBinaryPath(str string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"String": str,
+	}
+	return s.c.Request("selenium/action/setOptionChromeBinaryPath/", m)
 }
 
 // Sets the current path to ChromeDriver

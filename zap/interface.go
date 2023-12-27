@@ -34,6 +34,7 @@ type Interface interface {
 	Break() *Break
 	Context() *Context
 	Core() *Core
+	Exim() *Exim
 	Exportreport() *Exportreport
 	ForcedUser() *ForcedUser
 	Graphql() *Graphql
@@ -41,6 +42,7 @@ type Interface interface {
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
 	LocalProxies() *LocalProxies
+	Network() *Network
 	Openapi() *Openapi
 	Params() *Params
 	Pnh() *Pnh
@@ -128,6 +130,11 @@ func (c *Client) Core() *Core {
 	return &Core{c}
 }
 
+// Exim() returns a Exim client
+func (c *Client) Exim() *Exim {
+	return &Exim{c}
+}
+
 // Exportreport() returns a Exportreport client
 func (c *Client) Exportreport() *Exportreport {
 	return &Exportreport{c}
@@ -161,6 +168,11 @@ func (c *Client) Importurls() *Importurls {
 // LocalProxies() returns a LocalProxies client
 func (c *Client) LocalProxies() *LocalProxies {
 	return &LocalProxies{c}
+}
+
+// Network() returns a Network clinet
+func (c *Client) Network() *Network {
+	return &Network{c}
 }
 
 // Openapi() returns a Openapi clinet

@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ func (a Ascan) ExcludedFromScan() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/excludedFromScan/", nil)
 }
 
-// Gets the scanners, optionally, of the given scan policy and/or scanner policy/category ID.
+// Gets the scan rules, optionally, of the given scan policy or scanner policy/category ID.
 func (a Ascan) Scanners(scanpolicyname string, policyid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -198,7 +198,7 @@ func (a Ascan) OptionShowAdvancedDialog() (map[string]interface{}, error) {
 	return a.c.Request("ascan/view/optionShowAdvancedDialog/", nil)
 }
 
-// Runs the active scanner against the given URL and/or Context. Optionally, the 'recurse' parameter can be used to scan URLs under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified), the parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy), the parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL.
+// Runs the active scanner against the given URL or Context. Optionally, the 'recurse' parameter can be used to scan URLs under the given URL, the parameter 'inScopeOnly' can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified), the parameter 'scanPolicyName' allows to specify the scan policy (if none is given it uses the default scan policy), the parameters 'method' and 'postData' allow to select a given request in conjunction with the given URL.
 func (a Ascan) Scan(url string, recurse string, inscopeonly string, scanpolicyname string, method string, postdata string, contextid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"url":            url,
@@ -283,7 +283,7 @@ func (a Ascan) ExcludeFromScan(regex string) (map[string]interface{}, error) {
 	return a.c.Request("ascan/action/excludeFromScan/", m)
 }
 
-// Enables all scanners of the scan policy with the given name, or the default if none given.
+// Enables all scan rules of the scan policy with the given name, or the default if none given.
 func (a Ascan) EnableAllScanners(scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -291,7 +291,7 @@ func (a Ascan) EnableAllScanners(scanpolicyname string) (map[string]interface{},
 	return a.c.Request("ascan/action/enableAllScanners/", m)
 }
 
-// Disables all scanners of the scan policy with the given name, or the default if none given.
+// Disables all scan rules of the scan policy with the given name, or the default if none given.
 func (a Ascan) DisableAllScanners(scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"scanPolicyName": scanpolicyname,
@@ -299,7 +299,7 @@ func (a Ascan) DisableAllScanners(scanpolicyname string) (map[string]interface{}
 	return a.c.Request("ascan/action/disableAllScanners/", m)
 }
 
-// Enables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+// Enables the scan rules with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 func (a Ascan) EnableScanners(ids string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids":            ids,
@@ -308,7 +308,7 @@ func (a Ascan) EnableScanners(ids string, scanpolicyname string) (map[string]int
 	return a.c.Request("ascan/action/enableScanners/", m)
 }
 
-// Disables the scanners with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
+// Disables the scan rules with the given IDs (comma separated list of IDs) of the scan policy with the given name, or the default if none given.
 func (a Ascan) DisableScanners(ids string, scanpolicyname string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids":            ids,

@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -201,6 +201,10 @@ func (c Core) OptionHttpState() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionHttpState/", nil)
 }
 
+func (c Core) OptionHttpStateEnabled() (map[string]interface{}, error) {
+	return c.c.Request("core/view/optionHttpStateEnabled/", nil)
+}
+
 func (c Core) OptionProxyChainName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainName/", nil)
 }
@@ -213,6 +217,10 @@ func (c Core) OptionProxyChainPort() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainPort/", nil)
 }
 
+func (c Core) OptionProxyChainPrompt() (map[string]interface{}, error) {
+	return c.c.Request("core/view/optionProxyChainPrompt/", nil)
+}
+
 func (c Core) OptionProxyChainRealm() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainRealm/", nil)
 }
@@ -221,21 +229,13 @@ func (c Core) OptionProxyChainUserName() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionProxyChainUserName/", nil)
 }
 
+func (c Core) OptionSingleCookieRequestHeader() (map[string]interface{}, error) {
+	return c.c.Request("core/view/optionSingleCookieRequestHeader/", nil)
+}
+
 // Gets the connection time out (in seconds).
 func (c Core) OptionTimeoutInSecs() (map[string]interface{}, error) {
 	return c.c.Request("core/view/optionTimeoutInSecs/", nil)
-}
-
-func (c Core) OptionHttpStateEnabled() (map[string]interface{}, error) {
-	return c.c.Request("core/view/optionHttpStateEnabled/", nil)
-}
-
-func (c Core) OptionProxyChainPrompt() (map[string]interface{}, error) {
-	return c.c.Request("core/view/optionProxyChainPrompt/", nil)
-}
-
-func (c Core) OptionSingleCookieRequestHeader() (map[string]interface{}, error) {
-	return c.c.Request("core/view/optionSingleCookieRequestHeader/", nil)
 }
 
 func (c Core) OptionUseProxyChain() (map[string]interface{}, error) {
@@ -455,6 +455,21 @@ func (c Core) SetOptionDefaultUserAgent(str string) (map[string]interface{}, err
 	return c.c.Request("core/action/setOptionDefaultUserAgent/", m)
 }
 
+// Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).
+func (c Core) SetOptionDnsTtlSuccessfulQueries(i int) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Integer": strconv.Itoa(i),
+	}
+	return c.c.Request("core/action/setOptionDnsTtlSuccessfulQueries/", m)
+}
+
+func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Boolean": strconv.FormatBool(boolean),
+	}
+	return c.c.Request("core/action/setOptionHttpStateEnabled/", m)
+}
+
 func (c Core) SetOptionProxyChainName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"String": str,
@@ -467,6 +482,20 @@ func (c Core) SetOptionProxyChainPassword(str string) (map[string]interface{}, e
 		"String": str,
 	}
 	return c.c.Request("core/action/setOptionProxyChainPassword/", m)
+}
+
+func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Integer": strconv.Itoa(i),
+	}
+	return c.c.Request("core/action/setOptionProxyChainPort/", m)
+}
+
+func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, error) {
+	m := map[string]string{
+		"Boolean": strconv.FormatBool(boolean),
+	}
+	return c.c.Request("core/action/setOptionProxyChainPrompt/", m)
 }
 
 func (c Core) SetOptionProxyChainRealm(str string) (map[string]interface{}, error) {
@@ -489,35 +518,6 @@ func (c Core) SetOptionProxyChainUserName(str string) (map[string]interface{}, e
 		"String": str,
 	}
 	return c.c.Request("core/action/setOptionProxyChainUserName/", m)
-}
-
-// Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).
-func (c Core) SetOptionDnsTtlSuccessfulQueries(i int) (map[string]interface{}, error) {
-	m := map[string]string{
-		"Integer": strconv.Itoa(i),
-	}
-	return c.c.Request("core/action/setOptionDnsTtlSuccessfulQueries/", m)
-}
-
-func (c Core) SetOptionHttpStateEnabled(boolean bool) (map[string]interface{}, error) {
-	m := map[string]string{
-		"Boolean": strconv.FormatBool(boolean),
-	}
-	return c.c.Request("core/action/setOptionHttpStateEnabled/", m)
-}
-
-func (c Core) SetOptionProxyChainPort(i int) (map[string]interface{}, error) {
-	m := map[string]string{
-		"Integer": strconv.Itoa(i),
-	}
-	return c.c.Request("core/action/setOptionProxyChainPort/", m)
-}
-
-func (c Core) SetOptionProxyChainPrompt(boolean bool) (map[string]interface{}, error) {
-	m := map[string]string{
-		"Boolean": strconv.FormatBool(boolean),
-	}
-	return c.c.Request("core/action/setOptionProxyChainPrompt/", m)
 }
 
 func (c Core) SetOptionSingleCookieRequestHeader(boolean bool) (map[string]interface{}, error) {

@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2022 the ZAP development team
+// Copyright 2017 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ func (p Pscan) RecordsToScan() (map[string]interface{}, error) {
 	return p.c.Request("pscan/view/recordsToScan/", nil)
 }
 
-// Lists all passive scanners with its ID, name, enabled state and alert threshold.
+// Lists all passive scan rules with their ID, name, enabled state, and alert threshold.
 func (p Pscan) Scanners() (map[string]interface{}, error) {
 	return p.c.Request("pscan/view/scanners/", nil)
 }
@@ -43,6 +43,11 @@ func (p Pscan) Scanners() (map[string]interface{}, error) {
 // Show information about the passive scan rule currently being run (if any).
 func (p Pscan) CurrentRule() (map[string]interface{}, error) {
 	return p.c.Request("pscan/view/currentRule/", nil)
+}
+
+// Show information about the passive scan tasks currently being run (if any).
+func (p Pscan) CurrentTasks() (map[string]interface{}, error) {
+	return p.c.Request("pscan/view/currentTasks/", nil)
 }
 
 // Gets the maximum number of alerts a passive scan rule should raise.
@@ -66,17 +71,17 @@ func (p Pscan) SetScanOnlyInScope(onlyinscope string) (map[string]interface{}, e
 	return p.c.Request("pscan/action/setScanOnlyInScope/", m)
 }
 
-// Enables all passive scanners
+// Enables all passive scan rules
 func (p Pscan) EnableAllScanners() (map[string]interface{}, error) {
 	return p.c.Request("pscan/action/enableAllScanners/", nil)
 }
 
-// Disables all passive scanners
+// Disables all passive scan rules
 func (p Pscan) DisableAllScanners() (map[string]interface{}, error) {
 	return p.c.Request("pscan/action/disableAllScanners/", nil)
 }
 
-// Enables all passive scanners with the given IDs (comma separated list of IDs)
+// Enables all passive scan rules with the given IDs (comma separated list of IDs)
 func (p Pscan) EnableScanners(ids string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids": ids,
@@ -84,7 +89,7 @@ func (p Pscan) EnableScanners(ids string) (map[string]interface{}, error) {
 	return p.c.Request("pscan/action/enableScanners/", m)
 }
 
-// Disables all passive scanners with the given IDs (comma separated list of IDs)
+// Disables all passive scan rules with the given IDs (comma separated list of IDs)
 func (p Pscan) DisableScanners(ids string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"ids": ids,
@@ -117,4 +122,9 @@ func (p Pscan) DisableAllTags() (map[string]interface{}, error) {
 // Enables all passive scan tags.
 func (p Pscan) EnableAllTags() (map[string]interface{}, error) {
 	return p.c.Request("pscan/action/enableAllTags/", nil)
+}
+
+// Clears the passive scan queue.
+func (p Pscan) ClearQueue() (map[string]interface{}, error) {
+	return p.c.Request("pscan/action/clearQueue/", nil)
 }
